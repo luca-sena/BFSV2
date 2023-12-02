@@ -53,10 +53,10 @@ function buscarMedidasEmTempoReal(idAquario) {
 }
 
 function contarGenero(){
-    qtdCidade = 'SELECT COUNT(DISTINCT genero) AS totalGeneros FROM usuario;'
+    qtdGenero = 'SELECT COUNT(DISTINCT genero) AS totalGeneros FROM usuario;'
 
-    console.log("Executando a instrução SQL: \n" + qtdCidade);
-    return database.executar(qtdCidade);
+    console.log("Executando a instrução SQL: \n" + qtdGenero);
+    return database.executar(qtdGenero);
 }
 
 

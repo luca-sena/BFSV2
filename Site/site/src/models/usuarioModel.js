@@ -2,15 +2,27 @@ var database = require("../database/config")
 
 function autenticar(email, senha, tipo) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
-    var instrucao = `
-        select * from endereco join usuario
-            on fkEndUsuario = idUsuario
-                join cadastro on fkCadUsuario = idUsuario
-                 join curso on fkCadCurso = idCurso
-                   join formacao on fkFormUsuario = idUsuario WHERE email = '${email}' AND senha = '${senha}' AND tipo = '${tipo}';
+    var instrucao = `SELECT
+
+                    endereco.*,
+                    usuario.*,
+                    cadastro.*,
+                    curso.*,
+                    formacao.*,
+                    (SELECT COUNT(*) FROM usuario) as qntdDeCadastros,
+                    (SELECT COUNT(*) FROM usuario u WHERE u.genero = 'Masculino') as qntdGeneroMasculino,
+                    (SELECT COUNT(*) FROM usuario u WHERE u.genero = 'Feminino') as qntdGeneroFeminino,
+                    (SELECT COUNT(*) FROM usuario u WHERE u.genero = 'Outro') as qntdGeneroOutros
+                   
+                    from endereco join usuario
+                        on fkEndUsuario = idUsuario
+                            join cadastro on fkCadUsuario = idUsuario
+                            join curso on fkCadCurso = idCurso
+                            join formacao on fkFormUsuario = idUsuario WHERE email = '${email}' AND senha = '${senha}' AND tipo = '${tipo}';        
     `;
+    // var instrucao2 = `SELECT  genero, COUNT(*) as qntdGenero, (SELECT COUNT(DISTINCT genero) FROM usuario) as totalGeneros FROM usuario GROUP BY genero;`
     var instrucao2 = ``
-    console.log("Executando a instrução SQL: \n" + instrucao);
+    console.log("Executando a instrução SQL: \n" + instrucao + instrucao2);
     return database.executar(instrucao);
 }
 

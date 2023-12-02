@@ -31,7 +31,7 @@
                 <div class="div-select">
                     <p>Tipo de Conta</p>
                     <select id="tipo_input">
-                        <option value="" disabled selected>Selecione uma opção</option>
+                        <!-- <option value="" disabled selected>Selecione uma opção</option> -->
                         <option value="ALU">Aluno</option>
                         <option value="ADM">Administrador</option>
                     </select>
@@ -61,7 +61,7 @@
             <!-- <img src="./assets/circle-loading.gif" id="loading-gif"> -->
         </div>
 
-        <div id="div_erros_login"></div>
+        <div id="div_erros_login" style="font-size: 1px;"></div>
     </section>
 </body>
 </html>
@@ -74,9 +74,27 @@
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
+        // setTimeout(function () {
+        //     if (div_erros_login.innerText == 'Email e/ou senha inválido(s)'){
+        //     alert('Email e/ou senha inválido(s)') } else if (div_erros_login.innerText == 'Email e/ou senha inválido(s)'){
+
+        //     }
+                    
+        //               
+
+        setTimeout(function () {
+            if(div_erros_login.innerText == 'Email e/ou senha inválido(s)'){
+                alert('Email e/ou senha inválido(s)')
+            } else if (div_erros_login.innerText == 'Mais de um usuário com o mesmo login e senha!'){
+                alert('Mais de um usuário com o mesmo login e senha!')
+            }
+        }, 500);
+       
+    
         if (emailVar == "" || senhaVar == "" || tipoVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            alert('Preencha todos os campos!')
             finalizarAguardar();
             return false;
         } else {
@@ -132,6 +150,10 @@
                             sessionStorage.ID_CURSO = json.idCurso;
                             sessionStorage.NOME_CURSO = json.nomeCurso;
                             sessionStorage.DURACAO = json.duracao;
+                            sessionStorage.QTD_CADASTROS = json.qntdDeCadastros;
+                            sessionStorage.QTD_MASCULINO = json.qntdGeneroMasculino;
+                            sessionStorage.QTD_FEMININO = json.qntdGeneroFeminino;
+                            sessionStorage.QTD_OUTROS = json.qntdGeneroOutros;
                     
 
                     window.location = "./dashboard/usuario.html";
@@ -144,7 +166,7 @@
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
-
+                
                 resposta.text().then(texto => {
                     console.error(texto);
                     finalizarAguardar(texto);

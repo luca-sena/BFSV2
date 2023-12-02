@@ -59,9 +59,16 @@
                         </div>
                     </div>
                 </div>
-            <div class="dash-adm" id="adminfo" style="color:white; font-size: 200px;">
-                TESTE
-            </div>
+            
+            <div class="dash-alu" id="adminfo">
+                <div class="dash-line1">
+                    <div class="grafico" id="graficoDiv">
+                        <canva id="graficoGen"></canva>
+                    </div>
+                </div>
+
+                </div>
+            
            
     </section>
 
@@ -81,17 +88,24 @@
 
 
 
-   
+        var userinfo = document.getElementById('userinfo');
+        var adminfo = document.getElementById('adminfo');
+
+
     if (email != null && nome != null) {
     
+        if(tipo == 'ALU'){
+            userinfo.style.display = "flex";
+            adminfo.style.display = "none";
+        } else if(tipo == 'ADM'){
+            userinfo.style.display = "none";
+            adminfo.style.display = "flex";
+        }
 
-        // if(tipo == 'ALU'){
-        //     userinfo.style.display = "flex";
-        //     adminfo.style.display = "block";
-        // } else if (tipo == 'ADM') {
-        //     userinfo.style.display = "block";
-        //     adminfo.style.display = "flex";
-        // }
+        var qtdCadastros = sessionStorage.QTD_CADASTROS 
+        var qtdMasculino = sessionStorage.QTD_MASCULINO
+        var qtdFeminino = sessionStorage.QTD_FEMININO
+        var qtdOutros = sessionStorage.QTD_OUTROS
 
         var nomeCurso = sessionStorage.NOME_CURSO 
         var duracao = sessionStorage.DURACAO
@@ -115,10 +129,7 @@
         
         spanDTProva.innerHTML = `${hora}:${minuto}h - ${dia}/${mes}/${ano}`
         // spanDTProva.innerHTML = dtProva
-        
-   
-   
-   
+           
    
     } else {
         window.location = "../login.html";
@@ -188,7 +199,7 @@ const config = {
 };
 
 let myChart = new Chart(
-    document.getElementById(``),
+    document.getElementById(`graficoDiv`),
     config
 );
 

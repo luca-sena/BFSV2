@@ -184,7 +184,7 @@
                             <option value="" disabled selected>Selecione uma opção</option>
                             <option value="Manhã">Manhã</option>
                             <option value="Tarde">Tarde</option>
-                            <option value="Noturno">Noturno</option>
+                            <option value="Noite">Noite</option>
                         </select>
                     </div>
                     <div class="div-input">
@@ -207,7 +207,7 @@
                             <option value="" disabled selected>Selecione uma opção</option>
                             <option value="Amigos">Amigos</option>
                             <option value="Parentes">Parentes</option>
-                            <option value="MídiasSociais">Mídias SociAIS</option>
+                            <option value="MídiasSociais">Mídias Sociais</option>
                             <option value="Ex-Alunos">Ex-Alunos</option>
                             <option value="Outro">Outro</option>
                         </select>
@@ -225,6 +225,7 @@
                   </div>
                                 
             </div>
+            <!-- <div id="div_erros_login" style="font-size: 200px;">aaaaa</div> -->
         </container>
     </section>
 </body>
@@ -288,8 +289,8 @@
       comoConheceuVar == ""
       ) {
         cardErro.style.display = "block";
-        mensagem_erro.innerHTML =
-            "(Mensagem de erro para todos os campos em branco)";
+
+        alert('Todos os campos estão em branco, preencha-os!')
 
         finalizarAguardar();
         return false;
@@ -333,8 +334,7 @@
         if (resposta.ok) {
           cardErro.style.display = "block";
 
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+          alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
 
           setTimeout(() => {
             window.location = "login.html";

@@ -35,6 +35,8 @@ html {
     background-repeat: no-repeat;
 }
 
+
+
 .container-header{
     position: relative;
     /* margin: 40px; */
@@ -52,6 +54,18 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+}
+
+.grafico{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 22px;
+    height: 100%;
+    width: 30%;
+    background-color: var(--dPurpleBFS);
 }
 
 .info{

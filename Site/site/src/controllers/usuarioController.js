@@ -1,5 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
+// var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -51,7 +51,12 @@ function autenticar(req, res) {
                             resultado: resultadoAutenticar[0].resultado,
                             idCurso: resultadoAutenticar[0].idCurso,
                             nomeCurso: resultadoAutenticar[0].nomeCurso,
-                            duracao: resultadoAutenticar[0].duracao
+                            duracao: resultadoAutenticar[0].duracao,
+                            qntdDeCadastros: resultadoAutenticar[0].qntdDeCadastros,
+                            qntdGeneroMasculino: resultadoAutenticar[0].qntdGeneroMasculino,
+                            qntdGeneroFeminino: resultadoAutenticar[0].qntdGeneroFeminino,
+                            qntdGeneroOutros: resultadoAutenticar[0].qntdGeneroOutros,
+                            
 
                         });
 
@@ -94,6 +99,12 @@ function cadastrar(req, res) {
     var periodo = req.body.periodoServer;
     var data = req.body.dataServer;
     var comoConheceu = req.body.comoConheceuServer
+    var qntdDeCadastros = resultadoAutenticar[0].qntdDeCadastros;
+    var qntdGeneroMasculino = resultadoAutenticar[0].qntdGeneroMasculino;
+    var qntdGeneroFeminino = resultadoAutenticar[0].qntdGeneroFeminino;
+    var qntdGeneroOutros = resultadoAutenticar[0].qntdGeneroOutros;
+    
+    // var totalGeneros = req.body.comoConheceuServer
 
     var empresaId = req.body.empresaServer;
 
@@ -139,7 +150,7 @@ function cadastrar(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, cpf, email, telefone, genero, senha, estado, cidade, bairro, rua, numero, cep, escolaridade, nomeEscola, curso, regime, periodo, data, comoConheceu)
+        usuarioModel.cadastrar(nome, cpf, email, telefone, genero, senha, estado, cidade, bairro, rua, numero, cep, escolaridade, nomeEscola, curso, regime, periodo, data, comoConheceu, qntdDeCadastros, qntdGeneroMasculino, qntdGeneroFeminino, qntdGeneroOutros)
             .then(
                 function (resultado) {
                     res.json(resultado);
