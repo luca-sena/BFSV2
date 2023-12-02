@@ -41,7 +41,7 @@ function cadastrar(nome, cpf, email, telefone, genero, senha, estado, cidade, ba
                 return database.executar(instrucaoCadastroEscolaridade).then((result) => {
             
                     var instrucaoCadastroCadastro = `
-                    insert into cadastro values (null, (select idUsuario from usuario where cpf = '${cpf}'), '${curso}', null, '${regime}','${periodo}', '${data}', null);
+                    insert into cadastro values (null, (select idUsuario from usuario where cpf = '${cpf}'), '${curso}', '${regime}','${periodo}', '${data}', null);
                     `;
     
                     console.log("Executando a instrução SQL para cadastrar endereço: \n" + instrucaoCadastroCadastro);

@@ -17,7 +17,7 @@
         </container>
         
 
-            <div class="dash">
+            <div class="dash-alu" id="userinfo">
                 <div class="container-dash">
                     
                     <div class="dash-line1">
@@ -59,7 +59,10 @@
                         </div>
                     </div>
                 </div>
+            <div class="dash-adm" id="adminfo" style="color:white; font-size: 200px;">
+                TESTE
             </div>
+           
     </section>
 
     <canva id="cidade"></canva>
@@ -74,12 +77,22 @@
     function validarSessao() {
         var email = sessionStorage.EMAIL_USUARIO;
         var nome = sessionStorage.NOME_USUARIO;
+        var tipo = sessionStorage.TIPO;
 
 
 
    
     if (email != null && nome != null) {
     
+
+        // if(tipo == 'ALU'){
+        //     userinfo.style.display = "flex";
+        //     adminfo.style.display = "block";
+        // } else if (tipo == 'ADM') {
+        //     userinfo.style.display = "block";
+        //     adminfo.style.display = "flex";
+        // }
+
         var nomeCurso = sessionStorage.NOME_CURSO 
         var duracao = sessionStorage.DURACAO
         var periodo = sessionStorage.PERIODO 

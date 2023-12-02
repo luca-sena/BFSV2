@@ -45,7 +45,6 @@ function autenticar(req, res) {
                             idCad: resultadoAutenticar[0].idCad,
                             fkCadUsuario: resultadoAutenticar[0].fkCadUsuario,
                             fkCadCurso: resultadoAutenticar[0].fkCadCurso,
-                            fkMonitor: resultadoAutenticar[0].fkMonitor,
                             regime: resultadoAutenticar[0].regime,
                             periodo: resultadoAutenticar[0].periodo,
                             dtProva: resultadoAutenticar[0].dtProva,
