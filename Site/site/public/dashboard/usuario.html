@@ -1,263 +1,246 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
+  <head>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-    <link rel="stylesheet" href="../style/user-style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/user-style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body onload="validarSessao(), plotarGraficos()">
-    
+  </head>
+  <body onload="validarSessao(), plotarGraficos()">
     <section id="sec-dash" class="sec-dash">
-        <container class="container-header">
-            <a href="../index.html">        
-                <img class="logo" src="../img/logo.png" alt="Logo FBS">
-            </a>
-        </container>
-        
+      <container class="container-header">
+        <a href="../index.html">
+          <img class="logo" src="../img/logo.png" alt="Logo FBS" />
+        </a>
+      </container>
 
-            <div class="dash-alu" id="userinfo">
-                <div class="container-dash">
-                    
-                    <div class="dash-line1">
-                        <div class="vg">
-                            <h1 class="title">Visão Geral</h1>
-                            
-                            
-                            <!-- <p class="curso text">Curso: Design de Moda <br>
+      <div class="dash-alu" id="userinfo">
+        <div class="container-dash">
+          <div class="dash-line1">
+            <div class="vg">
+              <h1 class="title">Visão Geral</h1>
+
+              <!-- <p class="curso text">Curso: Design de Moda <br>
                             Tipo: Bacharelado <br>
                             Duração: 8 Semestres <br>
                             Período: Noturno <br>
                             Regime: Híbrido </p> -->
-                            <div class="text">Curso: <span class="text" id="spanCurso"></span> </div> 
-                            <div class="text">Duração: <span class="text" id="spanDuracao"></span> semestres</div> 
-                            <div class="text">Período: <span class="text" id="spanPeriodo"></span> </div> 
-                            <div class="text">Regime: <span class="text" id="spanRegime"></span> </div> 
-                        
-                        </div>
-                        <div class="status">
-                            <div class="img-status"></div>
-                            <div class="text-status">
-                                <h1 class="title-l">Status</h1>
-                                <p class="text-l">Está quase lá, logo o resultado estará disponível</p> <br>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="dash-line2">
-                        <div class="dados"></div>
-                        <div class="info">
-                            <h1 class="title">Informações</h1>
-                           
-                            <div class="text">Data da Prova: <span class="text" id="spanDTProva"></span> </div> 
-                           
-                          <p class="text"> <br> Endereço:<br>
-                            R. Doná Catarina Maria de Jesus,<br> Nº418 - Bonsucesso, Guarulhos
-                            </p>
-                        </div>
-                        </div>
-                    </div>
-                </div>
+              <div class="text">
+                Curso: <span class="text" id="spanCurso"></span>
+              </div>
+              <div class="text">
+                Duração: <span class="text" id="spanDuracao"></span> semestres
+              </div>
+              <div class="text">
+                Período: <span class="text" id="spanPeriodo"></span>
+              </div>
+              <div class="text">
+                Regime: <span class="text" id="spanRegime"></span>
+              </div>
+            </div>
+            <div class="status">
+              <div class="img-status"></div>
+              <div class="text-status">
+                <h1 class="title-l">Status</h1>
+                <p class="text-l">
+                  Está quase lá, logo o resultado estará disponível
+                </p>
+                <br />
+              </div>
+            </div>
+          </div>
 
-                            
-            <div class="dash-alu" id="adminfo">
+          <div class="dash-line2">
+            <div class="dados"></div>
+            <div class="info">
+              <h1 class="title">Informações</h1>
 
-                <div class="container-dash">
+              <div class="text">
+                Data da Prova: <span class="text" id="spanDTProva"></span>
+              </div>
 
-                    <div class="dash-line1">
-                        <div class="canvas-grafico">    
-                            <div class="title-graph">Gênero</div>                  
-                            <canvas id="graficoGen"></canvas>
-                        </div>
-                       
-                        <div class="canvas-grafico">    
-                            <div class="title-graph">Idade</div>                  
-                            <canvas id="grafico"></canvas>
-                        </div>
-                    </div>
-    
-                    </div>
-                </div>
-            
-           
+              <p class="text">
+                <br />
+                Endereço:<br />
+                R. Doná Catarina Maria de Jesus,<br />
+                Nº418 - Bonsucesso, Guarulhos
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-adm" id="adminfo">
+        <div class="container-dash">
+          <div class="dash-line1" style="margin-top: 5%;">
+            <div class="canvas-grafico">
+              <div class="title-graph">Gênero</div>
+              <canvas id="graficoGen"></canvas>
+            </div>
+
+            <div class="canvas-grafico">
+              <div class="title-graph">Idade</div>
+              <canvas id="graficoIdade"></canvas>
+            </div>
+          </div>
+          
+          <div class="dash-line2" style="margin-top: 10%;">
+            <div class="canvas-grafico">
+              <div class="title-graph">Escolaridade</div>
+              <canvas id="graficoEsco"></canvas>
+            </div>
+
+            <div class="canvas-grafico">
+              <div class="title-graph">Idade</div>
+              <canvas id="graficoConheceu"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- <canva id="cidade"></canva> -->
-</body>
+  </body>
 </html>
 
-
-
 <script>
+  function validarSessao() {
+    var email = sessionStorage.EMAIL_USUARIO;
+    var nome = sessionStorage.NOME_USUARIO;
+    var tipo = sessionStorage.TIPO;
 
-
-    function validarSessao() {
-        var email = sessionStorage.EMAIL_USUARIO;
-        var nome = sessionStorage.NOME_USUARIO;
-        var tipo = sessionStorage.TIPO;
-
-
-
-        var userinfo = document.getElementById('userinfo');
-        var adminfo = document.getElementById('adminfo');
-
+    var userinfo = document.getElementById("userinfo");
+    var adminfo = document.getElementById("adminfo");
 
     if (email != null && nome != null) {
-    
-        if(tipo == 'ALU'){
-            userinfo.style.display = "flex";
-            adminfo.style.display = "none";
-        } else if(tipo == 'ADM'){
-            userinfo.style.display = "none";
-            adminfo.style.display = "flex";
-        }
+      if (tipo == "ALU") {
+        userinfo.style.display = "flex";
+        adminfo.style.display = "none";
+      } else if (tipo == "ADM") {
+        userinfo.style.display = "none";
+        adminfo.style.display = "flex";
+      }
 
-        
-        var nomeCurso = sessionStorage.NOME_CURSO 
-        var duracao = sessionStorage.DURACAO
-        var periodo = sessionStorage.PERIODO 
-        var regime = sessionStorage.REGIME
-        
-        spanCurso.innerHTML = nomeCurso
-        spanDuracao.innerHTML = duracao
-        spanPeriodo.innerHTML = periodo
-        spanRegime.innerHTML = regime
-        
-        
-        var dtProva = sessionStorage.DT_PROVA
+      var nomeCurso = sessionStorage.NOME_CURSO;
+      var duracao = sessionStorage.DURACAO;
+      var periodo = sessionStorage.PERIODO;
+      var regime = sessionStorage.REGIME;
 
-        var hora = dtProva[11] + dtProva[12]
-        var minuto = dtProva[14] + dtProva[15];
-        var dia = dtProva[8] + dtProva[9];
-        var mes = dtProva[5] + dtProva[6];
-        var ano = dtProva[0] + dtProva[1] + dtProva[2] + dtProva[3];
+      spanCurso.innerHTML = nomeCurso;
+      spanDuracao.innerHTML = duracao;
+      spanPeriodo.innerHTML = periodo;
+      spanRegime.innerHTML = regime;
 
-        
-        spanDTProva.innerHTML = `${hora}:${minuto}h - ${dia}/${mes}/${ano}`
-        // spanDTProva.innerHTML = dtProva
-           
-   
+      var dtProva = sessionStorage.DT_PROVA;
+
+      var hora = dtProva[11] + dtProva[12];
+      var minuto = dtProva[14] + dtProva[15];
+      var dia = dtProva[8] + dtProva[9];
+      var mes = dtProva[5] + dtProva[6];
+      var ano = dtProva[0] + dtProva[1] + dtProva[2] + dtProva[3];
+
+      spanDTProva.innerHTML = `${hora}:${minuto}h - ${dia}/${mes}/${ano}`;
+      // spanDTProva.innerHTML = dtProva
     } else {
-        window.location = "../login.html";
+      window.location = "../login.html";
     }
+  }
+
+  function plotarGraficos() {
+    let ctx = document.getElementById("graficoGen");
+    let ctx1 = document.getElementById("graficoIdade");
+    let labelsGen = ["Feminino", "Masculino", "Outros"];
+    let colorHexGen = ["#ff00dd", "#006aff", "#00ff00"];
+    let dataGen = [];
+
+    let labelsIdade = [
+      "-18 Anos",
+      "Entre 18 e 25 Anos",
+      "Entre 26 e 35 Anos",
+      "Entre 36 e 59 Anos",
+      "+60 Anos",
+    ];
+    let colorHexIdade = ["#ff00dd", "#006aff", "#00ff00", "#ff9900", "#ffcc00"];
+    let dataIdade = [];
+
+    var qtdCadastros = sessionStorage.QTD_CADASTROS;
+
+    var qntdMenor18 = sessionStorage.QTD_MENOR18;
+    var qntdEntre18e25 = sessionStorage.QTD_ENTRE18E25;
+    var qntdEntre26e35 = sessionStorage.QTD_ENTRE26E35;
+    var qntdEntre36e59 = sessionStorage.QTD_ENTRE36E59;
+    var qntdMaior60 = sessionStorage.QTD_MAIOR60;
+
+    dataIdade.push(qntdMenor18);
+    dataIdade.push(qntdEntre18e25);
+    dataIdade.push(qntdEntre26e35);
+    dataIdade.push(qntdEntre36e59);
+    dataIdade.push(qntdMaior60);
+
+
+
+    var qtdMasculino = sessionStorage.QTD_MASCULINO;
+    var qtdFeminino = sessionStorage.QTD_FEMININO;
+    var qtdOutros = sessionStorage.QTD_OUTROS;
+
+    dataGen.push(qtdFeminino);
+    dataGen.push(qtdMasculino);
+    dataGen.push(qtdOutros);
+
+    let myChart = new Chart(ctx, {
+      type: "pie",
+      data: {
+        datasets: [
+          {
+            data: dataGen,
+            backgroundColor: colorHexGen,
+          },
+        ],
+        labels: labelsGen,
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: "right",
+          labels: {
+            fontSize: 16,
+            textAlign: "center",
+            padding: 30,
+          },
+        },
+      },
+    });
+   
+    let myChart2 = new Chart(ctx1, {
+      type: "pie",
+      data: {
+        datasets: [
+          {
+            data: dataIdade,
+            backgroundColor: colorHexIdade,
+          },
+        ],
+        labels: labelsIdade,
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: "right",
+          labels: {
+            fontSize: 16,
+            textAlign: "center",
+            padding: 20,
+          },
+        },
+      },
+    });
+  
+
+
+
 }
 
-function plotarGraficos(){
-
-    let ctx = document.getElementById("graficoGen");
-      let labels = ["Feminino", "Masculino", "Outros"];
-      let colorHex = ["#ff00dd", "#006aff", "#00ff00"];
-      let dataGen = []
-
-        var qtdCadastros = sessionStorage.QTD_CADASTROS 
-        var qtdMasculino = sessionStorage.QTD_MASCULINO
-        var qtdFeminino = sessionStorage.QTD_FEMININO
-        var qtdOutros = sessionStorage.QTD_OUTROS
-
-        dataGen.push(qtdFeminino);
-        dataGen.push(qtdMasculino);
-        dataGen.push(qtdOutros);
-
-      let myChart = new Chart(ctx, {
-        type: "pie",
-        data: {
-          datasets: [
-            {
-              data: dataGen,
-              backgroundColor: colorHex,
-            },
-          ],
-          labels: labels,
-        },
-        options: {
-          responsive: true,
-          legend: {
-            position: 'right',
-            labels: {
-                fontSize:16,
-                textAlign: 'center',
-                padding: 40
-            }
-           
-          }
-        },
-      });
-
-
-    }
-
-
-
-
-
-
-
-// function obterTotalGenero() {
-//         fetch(`/usuarios/contarGenero`, { cache: 'no-store' }).then(function (response) {
-//             if (response.ok) {
-//                 response.json().then(function (resposta) {
-//                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-//                     resposta.reverse();
-
-//                     plotarGrafico(genero, totalGeneros);
-
-//                 });
-//             } else {
-//                 console.error('Nenhum dado encontrado ou erro na API');
-//             }
-//         })
-//             .catch(function (error) {
-//                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-//             });
-//     }
-
-//     function plotarGraficoCidaded(genero, totalGeneros) {
-//         //parametros = resultado dos selects coluna
-// console.log('iniciando plotagem do gráfico...');
-
-// let labels = [];
-
-// let dados = {
-//     labels: labels,
-//     datasets: [{
-//         label: 'Umidade',
-//         data: [],
-//         fill: false,
-//         borderColor: 'rgb(75, 192, 192)',
-//         tension: 0.1
-//     },
-//     {
-//         label: 'Temperatura',
-//         data: [],
-//         fill: false,
-//         borderColor: 'rgb(199, 52, 52)',
-//         tension: 0.1
-//     }]
-// };
-
-// console.log(resposta)
-
-// for (i = 0; i < resposta.length; i++) {
-//     var registro = resposta[i];
-//     labels.push(registro.momento_grafico);
-//     dados.datasets[0].data.push(registro.umidade);
-//     dados.datasets[1].data.push(registro.temperatura);
-// }
-
-// const config = {
-//     type: 'pie',
-//     data: dados,
-// };
-
-// let myChart = new Chart(
-//     document.getElementById(`graficoDiv`),
-//     config
-// );
-
-// // setTimeout(() => obterDadosGrafico(), 2000);
-// }
-
-
+ 
 </script>

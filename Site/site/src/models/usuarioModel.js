@@ -12,7 +12,12 @@ function autenticar(email, senha, tipo) {
                     (SELECT COUNT(*) FROM usuario) as qntdDeCadastros,
                     (SELECT COUNT(*) FROM usuario u WHERE u.genero = 'Masculino') as qntdGeneroMasculino,
                     (SELECT COUNT(*) FROM usuario u WHERE u.genero = 'Feminino') as qntdGeneroFeminino,
-                    (SELECT COUNT(*) FROM usuario u WHERE u.genero = 'Outro') as qntdGeneroOutros
+                    (SELECT COUNT(*) FROM usuario u WHERE u.genero = 'Outro') as qntdGeneroOutros,
+                    (SELECT COUNT(*) FROM usuario WHERE YEAR(CURDATE()) - YEAR(dtNasc) < 18) as qntdMenor18,
+                    (SELECT COUNT(*) FROM usuario WHERE YEAR(CURDATE()) - YEAR(dtNasc) >= 18 AND YEAR(CURDATE()) - YEAR(dtNasc) <= 25) as qntdEntre18e25,
+                    (SELECT COUNT(*) FROM usuario WHERE YEAR(CURDATE()) - YEAR(dtNasc) >= 26 AND YEAR(CURDATE()) - YEAR(dtNasc) <= 35) as qntdEntre26e35,
+                    (SELECT COUNT(*) FROM usuario WHERE YEAR(CURDATE()) - YEAR(dtNasc) >= 36 AND YEAR(CURDATE()) - YEAR(dtNasc) <= 59) as qntdEntre36e59,
+                    (SELECT COUNT(*) FROM usuario WHERE YEAR(CURDATE()) - YEAR(dtNasc) > 60) as qntdMaior60
                    
                     from endereco join usuario
                         on fkEndUsuario = idUsuario

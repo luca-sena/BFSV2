@@ -57,6 +57,11 @@ function autenticar(req, res) {
                             qntdGeneroFeminino: resultadoAutenticar[0].qntdGeneroFeminino,
                             qntdGeneroOutros: resultadoAutenticar[0].qntdGeneroOutros,
                             dtNasc: resultadoAutenticar[0].dtNasc,
+                            qntdMenor18: resultadoAutenticar[0].qntdMenor18,
+                            qntdEntre18e25: resultadoAutenticar[0].qntdEntre18e25,
+                            qntdEntre26e35: resultadoAutenticar[0].qntdEntre26e35,
+                            qntdEntre36e59: resultadoAutenticar[0].qntdEntre36e59,
+                            qntdMaior60: resultadoAutenticar[0].qntdMaior60,
                             
 
                         });
@@ -106,6 +111,12 @@ function cadastrar(req, res) {
     var qntdGeneroOutros = req.body.qntdGeneroOutrosuServer;
     var dtNasc = req.body.dtNascServer;
     
+    var qntdMenor18 = req.body.qntdMenor18Server
+    var qntdEntre18e25 = req.body.qntdEntre18e25Server
+    var qntdEntre26e35 = req.body.qntdEntre26e35Server
+    var qntdEntre36e59 = req.body.qntdEntre36e59Server
+    var qntdMaior60 = req.body.qntdMaior60Server
+    
     // var totalGeneros = req.body.comoConheceuServer
 
     var empresaId = req.body.empresaServer;
@@ -152,7 +163,7 @@ function cadastrar(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, dtNasc, cpf, email, telefone, genero, senha, estado, cidade, bairro, rua, numero, cep, escolaridade, nomeEscola, curso, regime, periodo, data, comoConheceu, qntdDeCadastros, qntdGeneroMasculino, qntdGeneroFeminino, qntdGeneroOutros)
+        usuarioModel.cadastrar(nome, dtNasc, cpf, email, telefone, genero, senha, estado, cidade, bairro, rua, numero, cep, escolaridade, nomeEscola, curso, regime, periodo, data, comoConheceu, qntdDeCadastros, qntdGeneroMasculino, qntdGeneroFeminino, qntdGeneroOutros, qntdMenor18, qntdEntre18e25, qntdEntre26e35, qntdEntre36e59, qntdMaior60)
             .then(
                 function (resultado) {
                     res.json(resultado);
