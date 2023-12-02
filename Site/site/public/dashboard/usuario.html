@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="../style/user-style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="validarSessao()">
+<body>
+    
+    <section id="sec-dash" class="sec-dash">
+        <container class="container-header">
+            <a href="../index.html">        
+                <img class="logo" src="../img/logo.png" alt="Logo FBS">
+            </a>
+        </container>
+        
+
+            <div class="dash">
+                <div class="container-dash">
+                    
+                    <div class="dash-line1">
+                        <div class="vg">
+                            <h1 class="title">Visão Geral</h1>
+                            
+                            
+                            <!-- <p class="curso text">Curso: Design de Moda <br>
+                            Tipo: Bacharelado <br>
+                            Duração: 8 Semestres <br>
+                            Período: Noturno <br>
+                            Regime: Híbrido </p> -->
+                            <div class="text">Curso: <span class="text" id="spanCurso"></span> </div> 
+                            <div class="text">Duração: <span class="text" id="spanDuracao"></span> semestres</div> 
+                            <div class="text">Período: <span class="text" id="spanPeriodo"></span> </div> 
+                            <div class="text">Regime: <span class="text" id="spanRegime"></span> </div> 
+                        
+                        </div>
+                        <div class="status">
+                            <div class="img-status"></div>
+                            <div class="text-status">
+                                <h1 class="title-l">Status</h1>
+                                <p class="text-l">Está quase lá, logo o resultado estará disponível</p> <br>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dash-line2">
+                        <div class="dados"></div>
+                        <div class="info">
+                            <h1 class="title">Informações</h1>
+                           
+                            <div class="text">Data da Prova: <span class="text" id="spanDTProva"></span> </div> 
+                           
+                          <p class="text"> <br> Endereço:<br>
+                            R. Doná Catarina Maria de Jesus,<br> Nº418 - Bonsucesso, Guarulhos
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <canva id="cidade"></canva>
+</body>
+</html>
+
+
+
+<script>
+
+
+    function validarSessao() {
+        var email = sessionStorage.EMAIL_USUARIO;
+        var nome = sessionStorage.NOME_USUARIO;
+
+
+
+   
+    if (email != null && nome != null) {
+    
+        var nomeCurso = sessionStorage.NOME_CURSO 
+        var duracao = sessionStorage.DURACAO
+        var periodo = sessionStorage.PERIODO 
+        var regime = sessionStorage.REGIME
+        
+        spanCurso.innerHTML = nomeCurso
+        spanDuracao.innerHTML = duracao
+        spanPeriodo.innerHTML = periodo
+        spanRegime.innerHTML = regime
+        
+        
+        var dtProva = sessionStorage.DT_PROVA
+
+        var hora = dtProva[11] + dtProva[12]
+        var minuto = dtProva[14] + dtProva[15];
+        var dia = dtProva[8] + dtProva[9];
+        var mes = dtProva[5] + dtProva[6];
+        var ano = dtProva[0] + dtProva[1] + dtProva[2] + dtProva[3];
+
+        
+        spanDTProva.innerHTML = `${hora}:${minuto}h - ${dia}/${mes}/${ano}`
+        // spanDTProva.innerHTML = dtProva
+        
+   
+   
+   
+   
+    } else {
+        window.location = "../login.html";
+    }
+}
+
+
+
+
+
+
+function obterTotalGenero() {
+        fetch(`/usuarios/contarGenero`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(genero, totalGeneros);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarGraficoCidaded(genero, totalGeneros) {
+        //parametros = resultado dos selects coluna
+console.log('iniciando plotagem do gráfico...');
+
+let labels = [];
+
+let dados = {
+    labels: labels,
+    datasets: [{
+        label: 'Umidade',
+        data: [],
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+    },
+    {
+        label: 'Temperatura',
+        data: [],
+        fill: false,
+        borderColor: 'rgb(199, 52, 52)',
+        tension: 0.1
+    }]
+};
+
+console.log(resposta)
+
+for (i = 0; i < resposta.length; i++) {
+    var registro = resposta[i];
+    labels.push(registro.momento_grafico);
+    dados.datasets[0].data.push(registro.umidade);
+    dados.datasets[1].data.push(registro.temperatura);
+}
+
+const config = {
+    type: 'pie',
+    data: dados,
+};
+
+let myChart = new Chart(
+    document.getElementById(``),
+    config
+);
+
+// setTimeout(() => obterDadosGrafico(), 2000);
+}
+
+
+</script>
+
+
+<!-- 
+    var id = sessionStorage.ID_USUARIO
+
+    if(id == alu){
+        
+    } else {
+
+        
+    }
+
+
+ -->

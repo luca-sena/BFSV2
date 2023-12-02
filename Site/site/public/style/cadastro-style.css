@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Krona+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Paytone+One&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #000;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+
+
+:root{
+    --whiteBFS: #E3E3E3;
+    --yellowBFS: #FFC700;
+    --bPurpleBFS: #730071;
+    --dPurpleBFS: #3B013A;
+}
+
+.container-header{
+    position: relative;
+    margin: 40px;
+}
+
+.container-header a img{
+    position: fixed;
+    width: 150px;
+}
+
+.sec-login{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: fit-content;
+    max-width: 100%;
+    width: 100vw;
+    background-image: url("../img/login-background.png");
+    /* background-size: cover; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+}
+.container-borders{
+    height: fit-content;
+}
+
+.border{
+    display: flex;
+    width: fit-content;
+    height: 100%;
+    max-width: 100%;
+    position: fixed;
+    /* background: blue; */
+}
+
+.border img{
+    height: 100vh;
+    width: fit-content;
+}
+
+
+.container-login{
+    position: sticky;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    width: 49vw;
+    height: fit-content;
+    /* background-color: green; */
+
+}
+
+.container-login-itens{
+    transform: translateX(16.6%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-around; */
+    width: 42vw;
+    background:black
+}
+
+.container-login .avatar{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    background-color: var(--yellowBFS);
+    margin-bottom: 27px;
+}
+
+.container-login .book{
+
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    background-color: var(--yellowBFS);
+    margin-bottom: 27px;
+}
+
+.container-login .location{
+
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    background-color: var(--yellowBFS);
+    margin-bottom: 27px;
+}
+
+.container-login .book img{
+    width: 50%;
+}
+.container-login .avatar img{
+    width: 50%;
+}
+
+.container-login .location img{
+    width: 50%;
+}
+
+.container-login .input-container{
+    display: flex;
+    flex-direction: column;
+    background: #000;
+    justify-content: space-between;
+    height: fit-content;
+}
+.container-login .div-input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30vw;
+    padding: 8px 0;
+    height: fit-content;
+    /* background-color: aqua; */
+}
+
+.container-login .div-input input{
+    text-align: center; 
+    width: 23vw;
+    height: 35px;
+    border: none;
+    border-radius: 100px;
+    margin: 5px;
+}
+
+.container-login .div-input select{
+    text-align: center; 
+    width: 23vw;
+    height: 35px;
+    border: none;
+    border-radius: 100px;
+    margin: 5px;
+    pointer-events: initial;
+    
+}
+
+
+.container-login .div-input p{
+    color: var(--whiteBFS);
+    font-family: Paytone One;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+.container-login .button-cadastrar{
+       
+    background-color: var(--yellowBFS);
+    border-radius: 42px;
+    border: none;
+    width: 13vw;
+    height: 50px;
+    color: #000;
+    font-family: Krona One;
+    font-size: 15px;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 50px;
+   
+}
+
+.container-login .cadastre{
+    text-align: center;
+    color: var(--whiteBFS);
+    font-family: Krona One;
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: none;
+    margin-bottom: 50px;
+   
+}
+

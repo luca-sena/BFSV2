@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script src="./js/sessao.js"></script>
+    <link rel="stylesheet" href="./style/cadastro-style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFS | Cadastro</title>
+</head>
+<body onload="listar()">
+    <section id="sec-login" class="sec-login">
+        <container class="container-header">
+            <a href="index.html">        
+                <img class="logo" src="./img/logo.png" alt="Logo FBS">
+            </a>
+        </container>
+        <div class="alerta_erro" style="color:azure">
+            <div class="card_erro" id="cardErro">
+              <span id="mensagem_erro"></span>
+            </div>
+          </div>
+
+        <container class="container-login">
+            
+            
+                <div class="border">
+                    <img src="./svg/border.svg" alt="">
+                </div>
+         
+           
+            <div class="container-login-itens">
+
+                <!-- Pessoa -->
+                <div class="avatar">
+                    <img src="./svg/avatar.svg" alt="">
+                </div>
+                <div class="input-container">
+                    
+                    <div class="div-input">
+                        <p>Nome Completo</p>
+                        <input id="nome_input" type="text">
+                    </div>
+                    <div class="div-input">
+                        <p>CPF</p>
+                        <input id="cpf_input" type="text" placeholder="Apenas números" maxlength="11">
+                    </div>
+                    
+                    <div class="div-input">
+                        <p>Email</p>
+                        <input id="email_input" type="text">
+                    </div>
+                    
+                    <div class="div-input">
+                        <p>Telefone</p>
+                        <input id="telefone_input" type="text" placeholder="Apenas números" maxlength="11">
+                    </div>
+                                      
+                    <div class="div-input">
+                        <p>Gênero</p>
+                        <select id="genero_input">
+                            <option value="" disabled selected>Selecione uma opção</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="div-input">
+                        <p>Senha</p>
+                        <input id="senha_input" type="password" placeholder="De 8 à 12 caracteres">
+                    </div>
+                    
+                    <div class="div-input">
+                        <p>Confirme a Senha</p>
+                        <input id="confirmacao_senha_input" type="password" placeholder="Insira novamente a senha">
+                    </div>
+
+                <!-- Endereco -->                  
+    
+                    
+                </div>  <!-- input-container -->
+                
+                <div class="location">
+                    <img src="./svg/pin.svg" alt="">
+                </div>
+                <div class="input-container">
+                    
+                    <div class="div-input">
+                        <p>Estado</p>
+                        <select id="estado_input">
+                            <option value="" disabled selected>Selecione uma opção</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                        </select>
+                    </div>
+                    <div class="div-input">
+                        <p>Cidade</p>
+                        <input id="cidade_input" type="text">
+                    </div>
+                    <div class="div-input">
+                        <p>Bairro</p>
+                        <input id="bairro_input" type="text">
+                    </div>
+                    <div class="div-input">
+                        <p>Rua</p>
+                        <input id="rua_input" type="text">
+                    </div>
+                    <div class="div-input">
+                        <p>Numero</p>
+                        <input id="numero_input" type="number">
+                    </div>
+                    <div class="div-input">
+                        <p>CEP</p>
+                        <input id="cep_input" type="text" placeholder="Apenas números" maxlength="8">
+                    </div>
+
+                </div> <!-- input-container -->
+                
+                <!-- Esolaridade -->   
+
+                <div class="book">
+                    <img src="./svg/book.svg" alt="">
+                </div>
+                <div class="input-container">
+                    
+                    <div class="div-input">
+                        <p>Escolaridade</p>
+                        <select id="escolaridade_input">
+                            <option value="" disabled selected>Selecione uma opção</option>
+                            <option value="EMIT">Ensino Médio Incompleto (Treineiro)</option>
+                            <option value="EMIF">Ensino Médio Incompleto (Finalizando)</option>
+                            <option value="EMC">Ensino Médio Completo</option>
+                            <option value="ESI">Ensino Superior Incompleto</option>
+                            <option value="ESC">Ensino Superior Completo</option>
+                        </select>
+                    </div>
+                    <div class="div-input">
+                        <p>Nome da Escola/Faculdade</p>
+                        <input id="nomeEscola_input" type="text">
+                    </div>
+                    <div class="div-input">
+                        <p>Curso de Interesse</p>
+                        <select name="cursos" id="curso_input">
+                            <option value="" disabled selected>Selecione uma opção</option>
+                        </select>
+                    </div>
+                    <div class="div-input">
+                        <p>Regime</p>
+                        <select name="regimes" id="regime_input">
+                            <option value="" disabled selected>Selecione uma opção</option>
+                            <option value="Presencial">Presencial</option>
+                            <option value="Hibrido">Hibrido</option>
+                            <option value="EAD">EAD</option>
+                        </select>
+                    </div>
+                    <div class="div-input">
+                        <p>Periodo</p>
+                        <select name="periodos" id="periodo_input">
+                            <option value="" disabled selected>Selecione uma opção</option>
+                            <option value="Manhã">Manhã</option>
+                            <option value="Tarde">Tarde</option>
+                            <option value="Noturno">Noturno</option>
+                        </select>
+                    </div>
+                    <div class="div-input">
+                        <p>Data da Prova</p>
+                        <select name="datas" id="data_input">
+                            <option value="" disabled selected>Selecione uma opção</option>
+                            <option value="2024-02-10 06:00:00">10/02/24 - 6:00h</option>
+                            <option value="2024-02-10 09:30:00">10/02/24 - 9:30h</option>
+                            
+                            <option value="2024-02-12 12:30:00">12/02/24 - 12:00h</option>
+                            <option value="2024-02-12 15:30:00">12/02/24 - 15:00h</option>
+                           
+                            <option value="2024-02-13 18:00:00">13/02/24 - 18:00h</option>
+                            <option value="2024-02-13 21:30:00">13/02/24 - 21:30h</option>
+                        </select>
+                    </div>
+                    <div class="div-input">
+                        <p>Como nos conheceu?</p>  <!--ALTERAR-->
+                        <select id="comoConheceu_input" type="text">
+                            <option value="" disabled selected>Selecione uma opção</option>
+                            <option value="Amigos">Amigos</option>
+                            <option value="Parentes">Parentes</option>
+                            <option value="MídiasSociais">Mídias SociAIS</option>
+                            <option value="Ex-Alunos">Ex-Alunos</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+
+                    
+
+                </div> <!-- input-container -->
+
+                <button onclick="cadastrar()" class="button-cadastrar">
+                    CADASTRAR
+                </button>
+                <div id="div_aguardar" class="loading-div" style="display: none;">
+                    <img src="./assets/circle-loading.gif" id="loading-gif" />
+                  </div>
+                                
+            </div>
+        </container>
+    </section>
+</body>
+</html>
+
+<script>
+    function cadastrar() {
+    aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var cpfVar = cpf_input.value;
+    var emailVar = email_input.value;
+    var telefoneVar = telefone_input.value;
+    var generoVar = genero_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+   
+    var estadoVar = estado_input.value;
+    var cidadeVar = cidade_input.value;
+    var bairroVar = bairro_input.value;
+    var ruaVar = rua_input.value;
+    var numeroVar = numero_input.value;
+    var cepVar = cep_input.value;
+    
+    var escolaridadeVar = escolaridade_input.value;
+    var nomeEscolaVar = nomeEscola_input.value;
+    var cursoVar = curso_input.value;
+    var regimeVar = regime_input.value;
+    var periodoVar = periodo_input.value;
+    var dataVar = data_input.value;
+    var comoConheceuVar = comoConheceu_input.value;
+
+    
+
+    // var empresaVar = listaEmpresas.value
+
+
+
+    if (
+      nomeVar == "" ||
+      cpfVar == "" ||
+      emailVar == "" ||
+      telefoneVar == "" ||
+      generoVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      estadoVar == "" ||
+      cidadeVar == "" ||
+      bairroVar == "" ||
+      ruaVar == "" ||
+      numeroVar == "" ||
+      cepVar == "" ||
+      escolaridadeVar == "" ||
+      nomeEscolaVar == "" ||
+      cursoVar == "" ||
+      regimeVar == "" ||
+      periodoVar == "" ||
+      dataVar == "" ||
+      comoConheceuVar == ""
+      ) {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML =
+            "(Mensagem de erro para todos os campos em branco)";
+
+        finalizarAguardar();
+        return false;
+        } else {
+        setInterval(sumirMensagem, 5000);
+        }
+
+     fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        cpfServer: cpfVar,
+        emailServer: emailVar,
+        telefoneServer: telefoneVar,
+        generoServer: generoVar,
+        senhaServer: senhaVar,
+        confirmacaoSenhaServer: confirmacaoSenhaVar,
+        estadoServer: estadoVar,
+        cidadeServer: cidadeVar,
+        bairroServer: bairroVar,
+        ruaServer: ruaVar,
+        numeroServer: numeroVar,
+        cepServer: cepVar,
+        escolaridadeServer: escolaridadeVar,
+        nomeEscolaServer: nomeEscolaVar,
+        cursoServer: cursoVar,
+        regimeServer: regimeVar,
+        periodoServer: periodoVar,
+        dataServer: dataVar,
+        comoConheceuServer: comoConheceuVar
+      }),
+    })
+    .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function listar() {
+    fetch("/cursos/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((cursos) => {
+          cursos.forEach((curso) => {
+            curso_input.innerHTML += `<option value='${curso.idCurso}'>${curso.nomeCurso}</option>`;
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+      
+}
+
+
+</script>
