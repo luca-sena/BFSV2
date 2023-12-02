@@ -56,6 +56,7 @@ function autenticar(req, res) {
                             qntdGeneroMasculino: resultadoAutenticar[0].qntdGeneroMasculino,
                             qntdGeneroFeminino: resultadoAutenticar[0].qntdGeneroFeminino,
                             qntdGeneroOutros: resultadoAutenticar[0].qntdGeneroOutros,
+                            dtNasc: resultadoAutenticar[0].dtNasc,
                             
 
                         });
@@ -98,11 +99,12 @@ function cadastrar(req, res) {
     var regime = req.body.regimeServer;
     var periodo = req.body.periodoServer;
     var data = req.body.dataServer;
-    var comoConheceu = req.body.comoConheceuServer
-    var qntdDeCadastros = req.body.qntdDeCadastros;
-    var qntdGeneroMasculino = req.body.qntdGeneroMasculino;
-    var qntdGeneroFeminino = req.body.qntdGeneroFeminino;
-    var qntdGeneroOutros = req.body.qntdGeneroOutros;
+    var comoConheceu = req.body.comoConheceuServer;
+    var qntdDeCadastros = req.body.qntdDeCadastrosuServer;
+    var qntdGeneroMasculino = req.body.qntdGeneroMasculinouServer;
+    var qntdGeneroFeminino = req.body.qntdGeneroFemininouServer;
+    var qntdGeneroOutros = req.body.qntdGeneroOutrosuServer;
+    var dtNasc = req.body.dtNascServer;
     
     // var totalGeneros = req.body.comoConheceuServer
 
@@ -150,7 +152,7 @@ function cadastrar(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, cpf, email, telefone, genero, senha, estado, cidade, bairro, rua, numero, cep, escolaridade, nomeEscola, curso, regime, periodo, data, comoConheceu, qntdDeCadastros, qntdGeneroMasculino, qntdGeneroFeminino, qntdGeneroOutros)
+        usuarioModel.cadastrar(nome, dtNasc, cpf, email, telefone, genero, senha, estado, cidade, bairro, rua, numero, cep, escolaridade, nomeEscola, curso, regime, periodo, data, comoConheceu, qntdDeCadastros, qntdGeneroMasculino, qntdGeneroFeminino, qntdGeneroOutros)
             .then(
                 function (resultado) {
                     res.json(resultado);
