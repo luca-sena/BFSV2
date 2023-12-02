@@ -1,49 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-</head>
-<body >
-        <div id='divzinha'></div>
-
-        <button onclick="exibir()"> exibir </button>
-
-        <img src="/" alt="">
-
-
-</body>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="chart-wrapper">
+                <canvas id="grafico"></canvas>
+        </div>
+    </div>
+  </body>
 </html>
 
-
 <script>
+  let ctx = document.getElementById("grafico");
+  let labels = ["Feminino", "Masculino", "Outros"];
+  let colorHex = ["#9132A8", "#A88332", "#32a8a8"];
+  
 
-
-        
-// var testeArmas = ["<div class='div_arma' id='divArma' style='background-image: url('./assets/armas/Captura\ de\ tela\ 2023-11-27\ 183047.png');' ></div>",
-//         "<div class='div_arma' id='divArma' style='background-image: url('./assets/armas/Captura\ de\ tela\ 2023-11-27\ 183007.png');' ></div>",
-//         "<div class='div_arma' id='divArma' style='background-image: url('./assets/armas/Captura\ de\ tela\ 2023-11-27\ 183117.png');' ></div>",
-//         "<div class='div_arma' id='divArma' style='background-image: url('./assets/armas/Captura\ de\ tela\ 2023-11-28\ 024928.png');' ></div>",
-//         "<div class='div_arma' id='divArma' style='background-image: url('./assets/armas/Captura\ de\ tela\ 2023-11-27\ 183715.png');' ></div>",
-//         "<div class='div_arma' id='divArma' style='background-image: url('./assets/armas/Captura\ de\ tela\ 2023-11-27\ 183859.png');' ></div>"]
-
-var testeArmas = ['<img src="./img/interrogacao.png" width= "100px" height="100px" onclick="funcBomba(this)" style="margin: 5px">', '<div id="divzinha" width="100px" style="background-image: url(./img/logo.png)"></div>']
-        
-
-var texto = 'vitinho' // ['v','i','t','i']
-texto.indexOf('h') = 5
-texto.indexOf('j') = -1
-
-if (texto.indexOf('.com') < 0) {
-        //não tem
-} 
-
-
-       function exibir(){
-        divzinha.innerHTML = `${testeArmas[1]}`;
-       } 
-
-
+  let myChart = new Chart(ctx, {
+    type: "pie",
+    data: {
+      datasets: [
+        {
+          data: [20, 30, 50],
+          backgroundColor: colorHex,
+        },
+      ],
+      labels: labels,
+    },
+    options: {
+      responsive: true,
+    }
+  });
 </script>
 
+<style>
+  body {
+    margin: 0;
+  }
+
+  .container{
+        height: 100vh;
+  }
+
+  .chart-wrapper {
+        width: 500px;
+    height: 500px;
+    margin: 0 auto;
+  }
+
+</style>

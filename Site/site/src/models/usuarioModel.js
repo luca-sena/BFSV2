@@ -22,7 +22,7 @@ function autenticar(email, senha, tipo) {
     `;
     // var instrucao2 = `SELECT  genero, COUNT(*) as qntdGenero, (SELECT COUNT(DISTINCT genero) FROM usuario) as totalGeneros FROM usuario GROUP BY genero;`
     var instrucao2 = ``
-    console.log("Executando a instrução SQL: \n" + instrucao + instrucao2);
+    console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 

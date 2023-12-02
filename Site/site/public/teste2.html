@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body onload="plotarGraficos()">
+    <div class="container">
+      <div class="chart-wrapper">
+        <canvas id="grafico"></canvas>
+      </div>
+    </div>
+
+    <script>
+      
+    function plotarGraficos() {
+        let ctx = document.getElementById("grafico");
+        let labels = ["Feminino", "Masculino", "Outros"];
+        let colorHex = ["#9132A8", "#A88332", "#32a8a8"];
+
+        let myChart = new Chart(ctx, {
+          type: "pie",
+          data: {
+            datasets: [
+              {
+                data: [20, 30, 50],
+                backgroundColor: colorHex,
+              },
+            ],
+            labels: labels,
+          },
+          options: {
+            responsive: true,
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+  }
+
+  .container {
+    height: 100vh;
+  }
+
+  .chart-wrapper {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+  }
+</style>

@@ -99,10 +99,10 @@ function cadastrar(req, res) {
     var periodo = req.body.periodoServer;
     var data = req.body.dataServer;
     var comoConheceu = req.body.comoConheceuServer
-    var qntdDeCadastros = resultadoAutenticar[0].qntdDeCadastros;
-    var qntdGeneroMasculino = resultadoAutenticar[0].qntdGeneroMasculino;
-    var qntdGeneroFeminino = resultadoAutenticar[0].qntdGeneroFeminino;
-    var qntdGeneroOutros = resultadoAutenticar[0].qntdGeneroOutros;
+    var qntdDeCadastros = req.body.qntdDeCadastros;
+    var qntdGeneroMasculino = req.body.qntdGeneroMasculino;
+    var qntdGeneroFeminino = req.body.qntdGeneroFeminino;
+    var qntdGeneroOutros = req.body.qntdGeneroOutros;
     
     // var totalGeneros = req.body.comoConheceuServer
 

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <link rel="stylesheet" href="../style/user-style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body onload="validarSessao()">
-<body>
+<body onload="validarSessao(), plotarGraficos()">
     
     <section id="sec-dash" class="sec-dash">
         <container class="container-header">
@@ -59,20 +60,31 @@
                         </div>
                     </div>
                 </div>
-            
-            <div class="dash-alu" id="adminfo">
-                <div class="dash-line1">
-                    <div class="grafico" id="graficoDiv">
-                        <canva id="graficoGen"></canva>
-                    </div>
-                </div>
 
+                            
+            <div class="dash-alu" id="adminfo">
+
+                <div class="container-dash">
+
+                    <div class="dash-line1">
+                        <div class="canvas-grafico">    
+                            <div class="title-graph">Gênero</div>                  
+                            <canvas id="graficoGen"></canvas>
+                        </div>
+                       
+                        <div class="canvas-grafico">    
+                            <div class="title-graph">Idade</div>                  
+                            <canvas id="grafico"></canvas>
+                        </div>
+                    </div>
+    
+                    </div>
                 </div>
             
            
     </section>
 
-    <canva id="cidade"></canva>
+    <!-- <canva id="cidade"></canva> -->
 </body>
 </html>
 
@@ -102,11 +114,7 @@
             adminfo.style.display = "flex";
         }
 
-        var qtdCadastros = sessionStorage.QTD_CADASTROS 
-        var qtdMasculino = sessionStorage.QTD_MASCULINO
-        var qtdFeminino = sessionStorage.QTD_FEMININO
-        var qtdOutros = sessionStorage.QTD_OUTROS
-
+        
         var nomeCurso = sessionStorage.NOME_CURSO 
         var duracao = sessionStorage.DURACAO
         var periodo = sessionStorage.PERIODO 
@@ -136,89 +144,120 @@
     }
 }
 
+function plotarGraficos(){
 
+    let ctx = document.getElementById("graficoGen");
+      let labels = ["Feminino", "Masculino", "Outros"];
+      let colorHex = ["#ff00dd", "#006aff", "#00ff00"];
+      let dataGen = []
 
+        var qtdCadastros = sessionStorage.QTD_CADASTROS 
+        var qtdMasculino = sessionStorage.QTD_MASCULINO
+        var qtdFeminino = sessionStorage.QTD_FEMININO
+        var qtdOutros = sessionStorage.QTD_OUTROS
 
+        dataGen.push(qtdFeminino);
+        dataGen.push(qtdMasculino);
+        dataGen.push(qtdOutros);
 
-
-function obterTotalGenero() {
-        fetch(`/usuarios/contarGenero`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
-
-                    plotarGrafico(genero, totalGeneros);
-
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
+      let myChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+          datasets: [
+            {
+              data: dataGen,
+              backgroundColor: colorHex,
+            },
+          ],
+          labels: labels,
+        },
+        options: {
+          responsive: true,
+          legend: {
+            position: 'right',
+            labels: {
+                fontSize:16,
+                textAlign: 'center',
+                padding: 40
             }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
+           
+          }
+        },
+      });
+
+
     }
 
-    function plotarGraficoCidaded(genero, totalGeneros) {
-        //parametros = resultado dos selects coluna
-console.log('iniciando plotagem do gráfico...');
 
-let labels = [];
 
-let dados = {
-    labels: labels,
-    datasets: [{
-        label: 'Umidade',
-        data: [],
-        fill: false,
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1
-    },
-    {
-        label: 'Temperatura',
-        data: [],
-        fill: false,
-        borderColor: 'rgb(199, 52, 52)',
-        tension: 0.1
-    }]
-};
 
-console.log(resposta)
 
-for (i = 0; i < resposta.length; i++) {
-    var registro = resposta[i];
-    labels.push(registro.momento_grafico);
-    dados.datasets[0].data.push(registro.umidade);
-    dados.datasets[1].data.push(registro.temperatura);
-}
 
-const config = {
-    type: 'pie',
-    data: dados,
-};
 
-let myChart = new Chart(
-    document.getElementById(`graficoDiv`),
-    config
-);
+// function obterTotalGenero() {
+//         fetch(`/usuarios/contarGenero`, { cache: 'no-store' }).then(function (response) {
+//             if (response.ok) {
+//                 response.json().then(function (resposta) {
+//                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+//                     resposta.reverse();
 
-// setTimeout(() => obterDadosGrafico(), 2000);
-}
+//                     plotarGrafico(genero, totalGeneros);
+
+//                 });
+//             } else {
+//                 console.error('Nenhum dado encontrado ou erro na API');
+//             }
+//         })
+//             .catch(function (error) {
+//                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+//             });
+//     }
+
+//     function plotarGraficoCidaded(genero, totalGeneros) {
+//         //parametros = resultado dos selects coluna
+// console.log('iniciando plotagem do gráfico...');
+
+// let labels = [];
+
+// let dados = {
+//     labels: labels,
+//     datasets: [{
+//         label: 'Umidade',
+//         data: [],
+//         fill: false,
+//         borderColor: 'rgb(75, 192, 192)',
+//         tension: 0.1
+//     },
+//     {
+//         label: 'Temperatura',
+//         data: [],
+//         fill: false,
+//         borderColor: 'rgb(199, 52, 52)',
+//         tension: 0.1
+//     }]
+// };
+
+// console.log(resposta)
+
+// for (i = 0; i < resposta.length; i++) {
+//     var registro = resposta[i];
+//     labels.push(registro.momento_grafico);
+//     dados.datasets[0].data.push(registro.umidade);
+//     dados.datasets[1].data.push(registro.temperatura);
+// }
+
+// const config = {
+//     type: 'pie',
+//     data: dados,
+// };
+
+// let myChart = new Chart(
+//     document.getElementById(`graficoDiv`),
+//     config
+// );
+
+// // setTimeout(() => obterDadosGrafico(), 2000);
+// }
 
 
 </script>
-
-
-<!-- 
-    var id = sessionStorage.ID_USUARIO
-
-    if(id == alu){
-        
-    } else {
-
-        
-    }
-
-
- -->
