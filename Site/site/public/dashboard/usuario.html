@@ -42,11 +42,13 @@
               </div>
             </div>
             <div class="status">
-              <div class="img-status"></div>
+              <div id="divImg" class="img-status">
+                
+              </div>
               <div class="text-status">
                 <h1 class="title-l">Status</h1>
-                <p class="text-l">
-                  Está quase lá, logo o resultado estará disponível
+                <p id="pStatus" class="text-l">
+                  
                 </p>
                 <br />
               </div>
@@ -54,7 +56,12 @@
           </div>
 
           <div class="dash-line2">
-            <div class="dados"></div>
+            <div class="dados">
+              <h1 class="title-l">Seus Dados</h1>
+              <p id="pDados" class="text-l">
+                  
+              </p>
+            </div>
             <div class="info">
               <h1 class="title">Informações</h1>
 
@@ -112,6 +119,11 @@
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
     var tipo = sessionStorage.TIPO;
+    
+    var telefone = sessionStorage.TELEFONE;
+    var cidade = sessionStorage.CIDADE;
+    var estado = sessionStorage.ESTADO;
+    var rua = sessionStorage.RUA;
 
     var userinfo = document.getElementById("userinfo");
     var adminfo = document.getElementById("adminfo");
@@ -123,6 +135,19 @@
       } else if (tipo == "ADM") {
         userinfo.style.display = "none";
         adminfo.style.display = "flex";
+      }
+
+      var resultado = sessionStorage.RESULTADO;
+
+      if(resultado == 'Aprovado'){
+        divImg.innerHTML = `<img src="../svg/aprovado.svg" alt="Ícone de Resultado" >`
+        pStatus.innerHTML = `Meus parabéns você foi aprovado!`
+      } else if (resultado == 'Reprovado'){
+        divImg.innerHTML = `<img src="../svg/reprovado.svg" alt="Ícone de Resultado" >`
+        pStatus.innerHTML = `Puxa, não foi dessa vez que você conseguiu, mas não desista!`
+      } else {
+        divImg.innerHTML = `<img src="../svg/aguardando.svg" alt="Ícone de Resultado" >`
+        pStatus.innerHTML = `Está quase lá, logo o resultado estará disponível.`
       }
 
       var nomeCurso = sessionStorage.NOME_CURSO;
@@ -144,6 +169,16 @@
       var ano = dtProva[0] + dtProva[1] + dtProva[2] + dtProva[3];
 
       spanDTProva.innerHTML = `${hora}:${minuto}h - ${dia}/${mes}/${ano}`;
+
+
+      pDados.innerHTML = `
+        Nome: ${nome} <br>
+        Email: ${email} <br>
+        Telefone: ${telefone} <br>
+        Estado: ${estado} <br>
+        Cidade: ${cidade} <br>
+        Rua: ${rua}
+        `
       
     } else {
       window.location = "../login.html";

@@ -182,14 +182,14 @@ html {
 
 .container-dash .dash-line1 .status .img-status{
     margin-left: 5%;
-    background-image: url(../svg/hourglass.svg);
+    /* background-image: url(../svg/hourglass.svg);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 45%;
+    background-size: 45%; */
     border-radius: 100%;
     height: 180px;
     width: 180px;
-    background-color: var(--yellowBFS);
+    /* background-color: var(--yellowBFS); */
 }
 
 .container-dash .dash-line1 .status .text-status{ 

@@ -102,6 +102,7 @@ function autenticar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var siglaEst = req.body.siglaEstServer;
     var nome = req.body.nomeServer;
     var cpf = req.body.cpfServer;
     var email = req.body.emailServer;
@@ -197,7 +198,7 @@ function cadastrar(req, res) {
              curso, regime, periodo, data, comoConheceu, qntdDeCadastros, qntdGeneroMasculino,
               qntdGeneroFeminino, qntdGeneroOutros, qntdMenor18, qntdEntre18e25, qntdEntre26e35, 
               qntdEntre36e59, qntdMaior60, qntEscEMIT, qntEscEMIF, qntEscEMC, qntEscESI, qntEscESC,
-              qntConheAmigos, qntConheParentes, qntConheMidiasSociais, qntConheExAlunos, qntConheOutro
+              qntConheAmigos, qntConheParentes, qntConheMidiasSociais, qntConheExAlunos, qntConheOutro, siglaEst
               )
             .then(
                 function (resultado) {
