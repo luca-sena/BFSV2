@@ -213,7 +213,7 @@
                     
                     <div class="div-input">
                         <p>Telefone</p>
-                        <input id="telefone_input" type="text" placeholder="Apenas números" maxlength="11">
+                        <input id="telefone_input" type="text" placeholder="DDD e Número (Apenas números)" maxlength="11">
                     </div>
                                       
                     <div class="div-input">
@@ -393,8 +393,11 @@
 </html>
 
 <script>
+    var contadorValidacao = 0
+    
     function cadastrar() {
-    aguardar();
+    // aguardar();
+    contadorValidacao = 0
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
@@ -427,13 +430,11 @@
 
     var dtNascVar = `'${dtNascAnoVar}-${dtNascMesVar}-${dtNascDiaVar}'`
 
-    
+    // -------------- Validação Campo Vazio --------------
 
-    // var empresaVar = listaEmpresas.value
-
-
-
-    if (
+    if (dtNascDiaVar == "" ||
+      dtNascMesVar == "" ||
+      dtNascAnoVar == "" ||
       nomeVar == "" ||
       cpfVar == "" ||
       emailVar == "" ||
@@ -453,18 +454,114 @@
       regimeVar == "" ||
       periodoVar == "" ||
       dataVar == "" ||
-      comoConheceuVar == "" ||
-      dtNascVar == ''
+      comoConheceuVar == ""
       ) {
-        cardErro.style.display = "block";
-
-        alert('Todos os campos estão em branco, preencha-os!')
-
-        finalizarAguardar();
-        return false;
+         alert('Há campos em branco, preencha-os!')
         } else {
-        setInterval(sumirMensagem, 5000);
+            contadorValidacao++
         }
+
+    // -------------- Validação Nome --------------
+    
+    if (nomeVar.indexOf('@') >= 0 ||
+    nomeVar.indexOf('!') >= 0 ||
+    nomeVar.indexOf('#') >= 0 ||
+    nomeVar.indexOf('$') >= 0 ||
+    nomeVar.indexOf('%') >= 0 ||
+    nomeVar.indexOf('&') >= 0 ||
+    nomeVar.indexOf('.') >= 0 ||
+    nomeVar.indexOf('(') >= 0 ||
+    nomeVar.indexOf(')') >= 0 ||
+    nomeVar.match(/\d+/)) {
+        alert('Nomes não podem conter números ou caracteres especiais');
+    } else{
+        contadorValidacao++
+    }
+
+  // -------------- Validação CPF --------------
+
+    if(cpfVar.match(/[a-zA-Z]/)||
+    cpfVar.indexOf('.') >= 0 ||
+    cpfVar.indexOf('-') >= 0 ||
+    cpfVar.indexOf('/') >= 0 ||
+    cpfVar.indexOf('(') >= 0 ||
+    cpfVar.indexOf(')') >= 0 ||
+    cpfVar.indexOf(' ') >= 0){
+        alert('O campo CPF deve conter apenas números, sem espaços ou caracteres esepciais');
+    } else if (cpfVar.length != 11){
+        alert('O campo CPF deve conter 11 números');
+    } else {
+        contadorValidacao++
+    }
+ 
+    // -------------- Validação Email --------------
+   
+ if(emailVar.indexOf('@') < 0){
+        alert('Email inválido');
+    }else {
+        contadorValidacao++
+    }
+    
+    // -------------- Validação Telefone --------------
+
+    if(telefoneVar.match(/[a-zA-Z]/)||
+     telefoneVar.indexOf('@') >= 0 ||
+     telefoneVar.indexOf('!') >= 0 ||
+     telefoneVar.indexOf('#') >= 0 ||
+     telefoneVar.indexOf('$') >= 0 ||
+     telefoneVar.indexOf('%') >= 0 ||
+     telefoneVar.indexOf('.') >= 0 ||
+     telefoneVar.indexOf('&') >= 0 ||
+     telefoneVar.indexOf('(') >= 0 ||
+     telefoneVar.indexOf(')') >= 0 ||
+     telefoneVar.indexOf(' ') >= 0) {
+        alert('O campo telefone deve conter apenas números, sem espaços ou caracteres esepciais');
+     } else if (cpfVar.length > 11) {
+        alert('O campo telefone deve conter até 11 Números');
+     } else {
+        contadorValidacao++
+     }
+
+// -------------- Validação Senha --------------
+
+    if(senhaVar.indexOf('@') < 0 ||
+     senhaVar.indexOf('!') < 0 ||
+     senhaVar.indexOf('#') < 0 ||
+     senhaVar.indexOf('$') < 0 ||
+     senhaVar.indexOf('%') < 0 ||
+     senhaVar.indexOf('.') < 0 ||
+     senhaVar.indexOf('&') < 0 ||
+     senhaVar.indexOf('(') < 0 ||
+     senhaVar.indexOf(')') < 0 ||
+     senhaVar.indexOf(' ') < 0){
+        alert('O campo senha deve conter ao menos 1 caractere esepcial');
+     } else if (!senhaVar.match(/[a-z]/)) {
+        alert('O campo senha deve conter ao menos 1 uma letra minúscula')
+     } else if (!senhaVar.match(/[A-Z]/)) {
+        alert('O campo senha deve conter ao menos 1 uma letra maiúscula')
+     } else if (!senhaVar.match(/[0-9]/)) {
+        alert('O campo senha deve conter ao menos 1 um número')
+     } else {
+        contadorValidacao++
+     }
+
+// -------------- Validação Confirmação de Senha --------------
+   
+   if(senhaVar != confirmacaoSenhaVar){
+    alert('As senhas não correspondem');
+   } else {
+        contadorValidacao++
+     }
+   
+
+
+
+
+
+     
+   
+   
+    if(contadorValidacao == 6){
 
      fetch("/usuarios/cadastrar", {
       method: "POST",
@@ -521,6 +618,7 @@
       });
 
     return false;
+}
   }
 
   function listar() {
