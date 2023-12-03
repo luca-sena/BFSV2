@@ -74,7 +74,8 @@
 
       <div class="dash-adm" id="adminfo">
         <div class="container-dash">
-          <div class="dash-line1" style="margin-top: 5%;">
+          
+            <div class="dash-line1" style="justify-content: space-around">
             <div class="canvas-grafico">
               <div class="title-graph">Gênero</div>
               <canvas id="graficoGen"></canvas>
@@ -86,14 +87,14 @@
             </div>
           </div>
           
-          <div class="dash-line2" style="margin-top: 10%;">
+          <div class="dash-line2" style="margin-top: 10%;  justify-content: space-around">
             <div class="canvas-grafico">
               <div class="title-graph">Formação</div>
               <canvas id="graficoForm"></canvas>
             </div>
 
             <div class="canvas-grafico">
-              <div class="title-graph">Curso de interesse</div>
+              <div class="title-graph">Como Conheceu</div>
               <canvas id="graficoConheceu"></canvas>
             </div>
           </div>
@@ -164,10 +165,8 @@
     var qtdFeminino = sessionStorage.QTD_FEMININO;
     var qtdOutros = sessionStorage.QTD_OUTROS;
 
-    dataGen.push(qtdFeminino);
-    dataGen.push(qtdMasculino);
-    dataGen.push(qtdOutros);
-
+    dataGen.push(qtdFeminino, qtdMasculino, qtdOutros);
+  
     let myChart = new Chart(ctx, {
       type: "pie",
       data: {
@@ -212,12 +211,8 @@
     var qntdEntre36e59 = sessionStorage.QTD_ENTRE36E59;
     var qntdMaior60 = sessionStorage.QTD_MAIOR60;
 
-    dataIdade.push(qntdMenor18);
-    dataIdade.push(qntdEntre18e25);
-    dataIdade.push(qntdEntre26e35);
-    dataIdade.push(qntdEntre36e59);
-    dataIdade.push(qntdMaior60);
-    
+    dataIdade.push(qntdMenor18, qntdEntre18e25, qntdEntre26e35, qntdEntre36e59, qntdMaior60);
+        
     let myChart2 = new Chart(ctx1, {
       type: "pie",
       data: {
@@ -291,7 +286,51 @@
       },
     });
   
+//-------------------- GRAFICO COMO CONHECEU ---------------------------
 
+    let ctx3 = document.getElementById("graficoConheceu");
+    
+    let labelsConheceu = [
+      "Amigos",
+      "Parentes",
+      "Mídias Sociais",
+      "Ex-Alunos",
+      "Outro",
+    ];
+    let colorHexConheceu = ["#ff00dd", "#ff9900", "#006aff", "#00ff00",  "#db4b4b"];
+    let dataConheceu = [];
+
+    var qntConheAmigos = sessionStorage.QTD_CONHE_AMIGOS
+    var qntConheParentes = sessionStorage.QTD_CONHE_PARENTES
+    var qntConheMidiasSociais = sessionStorage.QTD_CONHE_MIDIAS_SOCIAIS
+    var qntConheExAlunos = sessionStorage.QTD_CONHE_EX_ALUNOS
+    var qntConheOutro = sessionStorage.QTD_CONHE_OUTRO
+
+    dataConheceu.push(qntConheAmigos, qntConheParentes, qntConheMidiasSociais, qntConheExAlunos, qntConheOutro);
+
+    let myChart4 = new Chart(ctx3, {
+      type: "pie",
+      data: {
+        datasets: [
+          {
+            data: dataConheceu,
+            backgroundColor: colorHexConheceu,
+          },
+        ],
+        labels: labelsConheceu,
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: "right",
+          labels: {
+            fontSize: 16,
+            textAlign: "center",
+            padding: 20,
+          },
+        },
+      },
+    });
 
 
 }

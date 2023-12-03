@@ -52,14 +52,14 @@ function autenticar(req, res) {
                             idCurso: resultadoAutenticar[0].idCurso,
                             nomeCurso: resultadoAutenticar[0].nomeCurso,
                             duracao: resultadoAutenticar[0].duracao,
-                           
+
                             qntdDeCadastros: resultadoAutenticar[0].qntdDeCadastros,
-                           
+
                             qntdGeneroMasculino: resultadoAutenticar[0].qntdGeneroMasculino,
                             qntdGeneroFeminino: resultadoAutenticar[0].qntdGeneroFeminino,
                             qntdGeneroOutros: resultadoAutenticar[0].qntdGeneroOutros,
                             dtNasc: resultadoAutenticar[0].dtNasc,
-                           
+
                             qntdMenor18: resultadoAutenticar[0].qntdMenor18,
                             qntdEntre18e25: resultadoAutenticar[0].qntdEntre18e25,
                             qntdEntre26e35: resultadoAutenticar[0].qntdEntre26e35,
@@ -71,8 +71,14 @@ function autenticar(req, res) {
                             qntEscEMC: resultadoAutenticar[0].qntEscEMC,
                             qntEscESI: resultadoAutenticar[0].qntEscESI,
                             qntEscESC: resultadoAutenticar[0].qntEscESC,
-
                             
+                            qntConheAmigos: resultadoAutenticar[0].qntConheAmigos,
+                            qntConheParentes: resultadoAutenticar[0].qntConheParentes,
+                            qntConheMidiasSociais: resultadoAutenticar[0].qntConheMidiasSociais,
+                            qntConheExAlunos: resultadoAutenticar[0].qntConheExAlunos,
+                            qntConheOutro: resultadoAutenticar[0].qntConheOutro,
+
+
 
                         });
 
@@ -115,27 +121,34 @@ function cadastrar(req, res) {
     var periodo = req.body.periodoServer;
     var data = req.body.dataServer;
     var comoConheceu = req.body.comoConheceuServer;
-   
+
     var qntdDeCadastros = req.body.qntdDeCadastrosuServer;
-   
+
     var qntdGeneroMasculino = req.body.qntdGeneroMasculinouServer;
     var qntdGeneroFeminino = req.body.qntdGeneroFemininouServer;
     var qntdGeneroOutros = req.body.qntdGeneroOutrosuServer;
     var dtNasc = req.body.dtNascServer;
-    
+
     var qntdMenor18 = req.body.qntdMenor18Server
     var qntdEntre18e25 = req.body.qntdEntre18e25Server
     var qntdEntre26e35 = req.body.qntdEntre26e35Server
     var qntdEntre36e59 = req.body.qntdEntre36e59Server
     var qntdMaior60 = req.body.qntdMaior60Server
-    
+
     var qntEscEMIT = req.body.qntEscEMITServer
     var qntEscEMIF = req.body.qntEscEMIFServer
     var qntEscEMC = req.body.qntEscEMCServer
     var qntEscESI = req.body.qntEscESIServer
     var qntEscESC = req.body.qntEscESCServer
-
     
+    var qntConheAmigos = req.body.qntConheAmigosServer
+    var qntConheParentes = req.body.ParentesServer
+    var qntConheMidiasSociais = req.body.qntConheMidiasSociaisServer
+    var qntConheExAlunos = req.body.qntConheExAlunosServer
+    var qntConheOutro = req.body.qntConheOutroServer
+    
+
+
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -179,7 +192,13 @@ function cadastrar(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, dtNasc, cpf, email, telefone, genero, senha, estado, cidade, bairro, rua, numero, cep, escolaridade, nomeEscola, curso, regime, periodo, data, comoConheceu, qntdDeCadastros, qntdGeneroMasculino, qntdGeneroFeminino, qntdGeneroOutros, qntdMenor18, qntdEntre18e25, qntdEntre26e35, qntdEntre36e59, qntdMaior60, qntEscEMIT, qntEscEMIF, qntEscEMC, qntEscESI, qntEscESC)
+        usuarioModel.cadastrar(nome, dtNasc, cpf, email, telefone, genero,
+             senha, estado, cidade, bairro, rua, numero, cep, escolaridade, nomeEscola, 
+             curso, regime, periodo, data, comoConheceu, qntdDeCadastros, qntdGeneroMasculino,
+              qntdGeneroFeminino, qntdGeneroOutros, qntdMenor18, qntdEntre18e25, qntdEntre26e35, 
+              qntdEntre36e59, qntdMaior60, qntEscEMIT, qntEscEMIF, qntEscEMC, qntEscESI, qntEscESC,
+              qntConheAmigos, qntConheParentes, qntConheMidiasSociais, qntConheExAlunos, qntConheOutro
+              )
             .then(
                 function (resultado) {
                     res.json(resultado);

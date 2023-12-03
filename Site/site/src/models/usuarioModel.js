@@ -28,11 +28,11 @@ function autenticar(email, senha, tipo) {
                     (SELECT COUNT(*) FROM formacao f where f.escolaridade = 'ESI') as qntEscESI,
                     (SELECT COUNT(*) FROM formacao f where f.escolaridade = 'ESC') as qntEscESC,
                     
-                    (SELECT COUNT(*) FROM formacao f where f.comoConhe = 'Amigos') as qntdConheAmigos,
-                    (SELECT COUNT(*) FROM formacao f where f.comoConhe = 'Parentes') as qntdConheParentes,
-                    (SELECT COUNT(*) FROM formacao f where f.comoConhe = 'MídiasSociais') as qntdConheMidiasSociais,
-                    (SELECT COUNT(*) FROM formacao f where f.comoConhe = 'Ex-Alunos') as qntdConheExAlunos,
-                    (SELECT COUNT(*) FROM formacao f where f.comoConhe = 'Outro') as qntdConheOutro
+                    (SELECT COUNT(*) FROM formacao f where f.comoConhe = 'Amigos') as qntConheAmigos,
+                    (SELECT COUNT(*) FROM formacao f where f.comoConhe = 'Parentes') as qntConheParentes,
+                    (SELECT COUNT(*) FROM formacao f where f.comoConhe = 'MídiasSociais') as qntConheMidiasSociais,
+                    (SELECT COUNT(*) FROM formacao f where f.comoConhe = 'Ex-Alunos') as qntConheExAlunos,
+                    (SELECT COUNT(*) FROM formacao f where f.comoConhe = 'Outro') as qntConheOutro
                    
                     from endereco join usuario
                         on fkEndUsuario = idUsuario
