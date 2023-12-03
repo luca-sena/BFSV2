@@ -472,7 +472,7 @@
     nomeVar.indexOf('.') >= 0 ||
     nomeVar.indexOf('(') >= 0 ||
     nomeVar.indexOf(')') >= 0 ||
-    nomeVar.match(/\d+/)) {
+    nomeVar.match(/[0-9]/)) {
         alert('Nomes não podem conter números ou caracteres especiais');
     } else{
         contadorValidacao++
@@ -487,7 +487,7 @@
     cpfVar.indexOf('(') >= 0 ||
     cpfVar.indexOf(')') >= 0 ||
     cpfVar.indexOf(' ') >= 0){
-        alert('O campo CPF deve conter apenas números, sem espaços ou caracteres esepciais');
+        alert('O campo CPF deve conter apenas números, sem espaços ou caracteres especiais');
     } else if (cpfVar.length != 11){
         alert('O campo CPF deve conter 11 números');
     } else {
@@ -515,7 +515,7 @@
      telefoneVar.indexOf('(') >= 0 ||
      telefoneVar.indexOf(')') >= 0 ||
      telefoneVar.indexOf(' ') >= 0) {
-        alert('O campo telefone deve conter apenas números, sem espaços ou caracteres esepciais');
+        alert('O campo telefone deve conter apenas números, sem espaços ou caracteres especiais');
      } else if (cpfVar.length > 11) {
         alert('O campo telefone deve conter até 11 Números');
      } else {
@@ -524,25 +524,27 @@
 
 // -------------- Validação Senha --------------
 
-    if(senhaVar.indexOf('@') < 0 ||
-     senhaVar.indexOf('!') < 0 ||
-     senhaVar.indexOf('#') < 0 ||
-     senhaVar.indexOf('$') < 0 ||
-     senhaVar.indexOf('%') < 0 ||
-     senhaVar.indexOf('.') < 0 ||
-     senhaVar.indexOf('&') < 0 ||
-     senhaVar.indexOf('(') < 0 ||
-     senhaVar.indexOf(')') < 0 ||
+    if(senhaVar.indexOf('@') < 0 &&
+     senhaVar.indexOf('!') < 0 &&
+     senhaVar.indexOf('#') < 0 &&
+     senhaVar.indexOf('$') < 0 &&
+     senhaVar.indexOf('%') < 0 &&
+     senhaVar.indexOf('.') < 0 &&
+     senhaVar.indexOf('&') < 0 &&
+     senhaVar.indexOf('(') < 0 &&
+     senhaVar.indexOf(')') < 0 &&
      senhaVar.indexOf(' ') < 0){
-        alert('O campo senha deve conter ao menos 1 caractere esepcial');
+        alert('A senha deve conter ao menos 1 caractere esepecial');
      } else if (!senhaVar.match(/[a-z]/)) {
-        alert('O campo senha deve conter ao menos 1 uma letra minúscula')
+        alert('A senha deve conter ao menos 1 uma letra minúscula')
      } else if (!senhaVar.match(/[A-Z]/)) {
-        alert('O campo senha deve conter ao menos 1 uma letra maiúscula')
+        alert('A senha deve conter ao menos 1 uma letra maiúscula')
      } else if (!senhaVar.match(/[0-9]/)) {
-        alert('O campo senha deve conter ao menos 1 um número')
-     } else {
-        contadorValidacao++
+        alert('A senha deve conter ao menos 1 um número')
+    } else if (senhaVar.length > 12 || senhaVar.length < 8){
+         alert('A senha deve conter de 8 à 12 caracteres') 
+    } else {
+         contadorValidacao++
      }
 
 // -------------- Validação Confirmação de Senha --------------
@@ -552,16 +554,84 @@
    } else {
         contadorValidacao++
      }
+
+// -------------- Validação Cidade --------------
+
+if (cidadeVar.indexOf('@') >= 0 ||
+    cidadeVar.indexOf('!') >= 0 ||
+    cidadeVar.indexOf('#') >= 0 ||
+    cidadeVar.indexOf('$') >= 0 ||
+    cidadeVar.indexOf('%') >= 0 ||
+    cidadeVar.indexOf('&') >= 0 ||
+    cidadeVar.indexOf('(') >= 0 ||
+    cidadeVar.indexOf(')') >= 0 ||
+    cidadeVar.match(/[0-9]/)) {
+        alert('O campo cidade não pode conter números ou caracteres especiais');
+    } else{
+        contadorValidacao++
+    }
+
+
+// -------------- Validação Bairro --------------
+
+if (bairroVar.indexOf('@') >= 0 ||
+    bairroVar.indexOf('!') >= 0 ||
+    bairroVar.indexOf('#') >= 0 ||
+    bairroVar.indexOf('$') >= 0 ||
+    bairroVar.indexOf('%') >= 0 ||
+    bairroVar.indexOf('&') >= 0 ||
+    bairroVar.indexOf('(') >= 0 ||
+    bairroVar.indexOf(')') >= 0 ||
+    bairroVar.match(/[0-9]/)) {
+        alert('O campo bairro não pode conter números ou caracteres especiais');
+    } else{
+        contadorValidacao++
+    }
+
+// -------------- Validação Numero --------------
+   
+if(numeroVar.match(/[a-zA-Z]/)||
+     numeroVar.indexOf('@') >= 0 ||
+     numeroVar.indexOf('!') >= 0 ||
+     numeroVar.indexOf('#') >= 0 ||
+     numeroVar.indexOf('$') >= 0 ||
+     numeroVar.indexOf('%') >= 0 ||
+     numeroVar.indexOf('.') >= 0 ||
+     numeroVar.indexOf('&') >= 0 ||
+     numeroVar.indexOf('(') >= 0 ||
+     numeroVar.indexOf(')') >= 0 ||
+     numeroVar.indexOf(' ') >= 0) {
+        alert('O campo numero deve conter apenas números, sem espaços ou caracteres especiais');
+     }  else {
+        contadorValidacao++
+     }
+
+// -------------- Validação CEP --------------
+
+    if(cepVar.match(/[a-zA-Z]/)||
+     cepVar.indexOf('@') >= 0 ||
+     cepVar.indexOf('!') >= 0 ||
+     cepVar.indexOf('#') >= 0 ||
+     cepVar.indexOf('$') >= 0 ||
+     cepVar.indexOf('%') >= 0 ||
+     cepVar.indexOf('.') >= 0 ||
+     cepVar.indexOf('&') >= 0 ||
+     cepVar.indexOf('(') >= 0 ||
+     cepVar.indexOf(')') >= 0 ||
+     cepVar.indexOf(' ') >= 0) {
+        alert('O campo CEP deve conter apenas números, sem espaços ou caracteres especiais');
+     } else if (cepVar.length != 8) {
+        alert('O campo CEP deve conter 8 Números');
+     } else {
+        contadorValidacao++
+     }
    
 
 
 
 
 
-     
-   
-   
-    if(contadorValidacao == 6){
+if(contadorValidacao == 11){ //Valida se todas validações passaram
 
      fetch("/usuarios/cadastrar", {
       method: "POST",
