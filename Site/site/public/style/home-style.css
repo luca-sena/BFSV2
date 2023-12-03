@@ -129,6 +129,12 @@ body{
     font-weight:  400;
 }
 
+.header-links li a:hover{
+    /* text-decoration: overline; */
+    color: #ff89fd;
+
+}
+
 .logo{
     width: 150px;
 }
@@ -192,7 +198,19 @@ body{
     text-align: center;
     justify-content: center;
     text-decoration: none;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
 }
+
+.sec-home .container-home a:hover, .sec-home .container-home a:focus, .sec-home .container-home a:active {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+    transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);}
+
 
 .sec-mid{
     flex-direction: column;
@@ -315,8 +333,18 @@ body{
     text-align: center;
     justify-content: center;
     text-decoration: none;
-
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
 }
+
+.container-mid-2 .mid2-right a:hover, .container-mid-2 .mid2-right a:focus, .container-mid-2 .mid2-right a:active {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+    transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);}
 
 
 .footer{
