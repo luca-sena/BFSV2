@@ -41,10 +41,10 @@
                 Regime: <span class="text" id="spanRegime"></span>
               </div>
             </div>
+            
+            
             <div class="status">
-              <div id="divImg" class="img-status">
-                
-              </div>
+              <div id="divImg" class="img-status"> </div>
               <div class="text-status">
                 <h1 class="title-l">Status</h1>
                 <p id="pStatus" class="text-l">
@@ -53,15 +53,25 @@
                 <br />
               </div>
             </div>
+
+
           </div>
 
           <div class="dash-line2">
+            
+            
             <div class="dados">
-              <h1 class="title-l">Seus Dados</h1>
-              <p id="pDados" class="text-l">
-                  
-              </p>
+              <div id="divImgDados" class="img-dados">
+                <img src="../svg/perfil.svg" alt="Ícone de Resultado" >
+              </div>
+              <div class="text-dados">
+                <h1 class="title-l">Seus Dados</h1>
+                <p id="pDados" class="text-l">
+                </p>
+              </div>
             </div>
+
+
             <div class="info">
               <h1 class="title">Informações</h1>
 
@@ -124,6 +134,7 @@
     var cidade = sessionStorage.CIDADE;
     var estado = sessionStorage.ESTADO;
     var rua = sessionStorage.RUA;
+    var numero = sessionStorage.NUMERO;
 
     var userinfo = document.getElementById("userinfo");
     var adminfo = document.getElementById("adminfo");
@@ -177,7 +188,8 @@
         Telefone: ${telefone} <br>
         Estado: ${estado} <br>
         Cidade: ${cidade} <br>
-        Rua: ${rua}
+        Rua: ${rua} <br>
+        Numero: ${numero}
         `
       
     } else {

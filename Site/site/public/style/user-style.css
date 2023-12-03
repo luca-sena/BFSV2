@@ -221,11 +221,17 @@ html {
 }
 
 .container-dash .dash-line2 .dados{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     border-radius: 22px;
     height: 100%;
     width: 69%;
     background-color: var(--dPurpleBFS);
 }
+
+
 
 .container-dash .dash-line2 .info{
     border-radius: 22px;
@@ -234,3 +240,14 @@ html {
     background-color: var(--dPurpleBFS);
 }
 
+.container-dash .dash-line2 .dados .img-dados {
+    margin-left:10%;
+    border-radius: 100%;
+    height: 180px;
+    width: 180px;
+}
+
+.container-dash .dash-line2 .dados .text-dados{ 
+    margin-right: 25%;
+    text-align: left;
+}
