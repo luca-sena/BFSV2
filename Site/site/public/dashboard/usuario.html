@@ -88,12 +88,12 @@
           
           <div class="dash-line2" style="margin-top: 10%;">
             <div class="canvas-grafico">
-              <div class="title-graph">Escolaridade</div>
-              <canvas id="graficoEsco"></canvas>
+              <div class="title-graph">Formação</div>
+              <canvas id="graficoForm"></canvas>
             </div>
 
             <div class="canvas-grafico">
-              <div class="title-graph">Idade</div>
+              <div class="title-graph">Curso de interesse</div>
               <canvas id="graficoConheceu"></canvas>
             </div>
           </div>
@@ -142,45 +142,24 @@
       var ano = dtProva[0] + dtProva[1] + dtProva[2] + dtProva[3];
 
       spanDTProva.innerHTML = `${hora}:${minuto}h - ${dia}/${mes}/${ano}`;
-      // spanDTProva.innerHTML = dtProva
+      
     } else {
       window.location = "../login.html";
     }
   }
 
   function plotarGraficos() {
+
+    //-------------------- GRAFICO GÊNERO ---------------------------
+
     let ctx = document.getElementById("graficoGen");
-    let ctx1 = document.getElementById("graficoIdade");
+   
     let labelsGen = ["Feminino", "Masculino", "Outros"];
     let colorHexGen = ["#ff00dd", "#006aff", "#00ff00"];
     let dataGen = [];
 
-    let labelsIdade = [
-      "-18 Anos",
-      "Entre 18 e 25 Anos",
-      "Entre 26 e 35 Anos",
-      "Entre 36 e 59 Anos",
-      "+60 Anos",
-    ];
-    let colorHexIdade = ["#ff00dd", "#006aff", "#00ff00", "#ff9900", "#ffcc00"];
-    let dataIdade = [];
-
     var qtdCadastros = sessionStorage.QTD_CADASTROS;
-
-    var qntdMenor18 = sessionStorage.QTD_MENOR18;
-    var qntdEntre18e25 = sessionStorage.QTD_ENTRE18E25;
-    var qntdEntre26e35 = sessionStorage.QTD_ENTRE26E35;
-    var qntdEntre36e59 = sessionStorage.QTD_ENTRE36E59;
-    var qntdMaior60 = sessionStorage.QTD_MAIOR60;
-
-    dataIdade.push(qntdMenor18);
-    dataIdade.push(qntdEntre18e25);
-    dataIdade.push(qntdEntre26e35);
-    dataIdade.push(qntdEntre36e59);
-    dataIdade.push(qntdMaior60);
-
-
-
+   
     var qtdMasculino = sessionStorage.QTD_MASCULINO;
     var qtdFeminino = sessionStorage.QTD_FEMININO;
     var qtdOutros = sessionStorage.QTD_OUTROS;
@@ -213,6 +192,32 @@
       },
     });
    
+    //-------------------- GRAFICO IDADE ---------------------------
+
+    let ctx1 = document.getElementById("graficoIdade");
+
+    let labelsIdade = [
+      "-18 Anos",
+      "Entre 18 e 25 Anos",
+      "Entre 26 e 35 Anos",
+      "Entre 36 e 59 Anos",
+      "+60 Anos",
+    ];
+    let colorHexIdade = ["#ff00dd", "#ff9900", "#006aff", "#00ff00",  "#db4b4b"];
+    let dataIdade = [];
+
+    var qntdMenor18 = sessionStorage.QTD_MENOR18;
+    var qntdEntre18e25 = sessionStorage.QTD_ENTRE18E25;
+    var qntdEntre26e35 = sessionStorage.QTD_ENTRE26E35;
+    var qntdEntre36e59 = sessionStorage.QTD_ENTRE36E59;
+    var qntdMaior60 = sessionStorage.QTD_MAIOR60;
+
+    dataIdade.push(qntdMenor18);
+    dataIdade.push(qntdEntre18e25);
+    dataIdade.push(qntdEntre26e35);
+    dataIdade.push(qntdEntre36e59);
+    dataIdade.push(qntdMaior60);
+    
     let myChart2 = new Chart(ctx1, {
       type: "pie",
       data: {
@@ -223,6 +228,55 @@
           },
         ],
         labels: labelsIdade,
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: "right",
+          labels: {
+            fontSize: 16,
+            textAlign: "center",
+            padding: 20,
+          },
+        },
+      },
+    });
+ 
+    //-------------------- GRAFICO FORMAÇÃO ---------------------------
+
+    let ctx2 = document.getElementById("graficoForm");
+    
+
+    let labelsForm = [
+      "E.M Inc. (Treineiro)",
+      "E.M Inc. (Finalizando)",
+      "E.M Completo",
+      "E.S Incompleto",
+      "E.S Completo",
+    ];
+    let colorHexForm = ["#ff00dd", "#ff9900", "#006aff", "#00ff00",  "#db4b4b"];
+    let dataForm = [];
+
+
+    var qtdEcEMIT = sessionStorage.QTD_ESC_EMIT 
+    var qtdEcEMIF = sessionStorage.QTD_ESC_EMIF 
+    var qtdEcEMC = sessionStorage.QTD_ESC_EMC
+    var qtdEcESI = sessionStorage.QTD_ESC_ESI
+    var qtdEcESC = sessionStorage.QTD_ESC_ESC
+
+    dataForm.push(qtdEcEMIT, qtdEcEMIF, qtdEcEMC, qtdEcESI, qtdEcESC);
+    
+    
+    let myChart3 = new Chart(ctx2, {
+      type: "pie",
+      data: {
+        datasets: [
+          {
+            data: dataForm,
+            backgroundColor: colorHexForm,
+          },
+        ],
+        labels: labelsForm,
       },
       options: {
         responsive: true,

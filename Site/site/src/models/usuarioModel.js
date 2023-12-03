@@ -9,15 +9,30 @@ function autenticar(email, senha, tipo) {
                     cadastro.*,
                     curso.*,
                     formacao.*,
+                   
                     (SELECT COUNT(*) FROM usuario) as qntdDeCadastros,
+                    
                     (SELECT COUNT(*) FROM usuario u WHERE u.genero = 'Masculino') as qntdGeneroMasculino,
                     (SELECT COUNT(*) FROM usuario u WHERE u.genero = 'Feminino') as qntdGeneroFeminino,
                     (SELECT COUNT(*) FROM usuario u WHERE u.genero = 'Outro') as qntdGeneroOutros,
+                   
                     (SELECT COUNT(*) FROM usuario WHERE YEAR(CURDATE()) - YEAR(dtNasc) < 18) as qntdMenor18,
                     (SELECT COUNT(*) FROM usuario WHERE YEAR(CURDATE()) - YEAR(dtNasc) >= 18 AND YEAR(CURDATE()) - YEAR(dtNasc) <= 25) as qntdEntre18e25,
                     (SELECT COUNT(*) FROM usuario WHERE YEAR(CURDATE()) - YEAR(dtNasc) >= 26 AND YEAR(CURDATE()) - YEAR(dtNasc) <= 35) as qntdEntre26e35,
                     (SELECT COUNT(*) FROM usuario WHERE YEAR(CURDATE()) - YEAR(dtNasc) >= 36 AND YEAR(CURDATE()) - YEAR(dtNasc) <= 59) as qntdEntre36e59,
-                    (SELECT COUNT(*) FROM usuario WHERE YEAR(CURDATE()) - YEAR(dtNasc) > 60) as qntdMaior60
+                    (SELECT COUNT(*) FROM usuario WHERE YEAR(CURDATE()) - YEAR(dtNasc) > 60) as qntdMaior60,
+                    
+                    (SELECT COUNT(*) FROM formacao f where f.escolaridade = 'EMIT') as qntEscEMIT,
+                    (SELECT COUNT(*) FROM formacao f where f.escolaridade = 'EMIF') as qntEscEMIF,
+                    (SELECT COUNT(*) FROM formacao f where f.escolaridade = 'EMC') as qntEscEMC,
+                    (SELECT COUNT(*) FROM formacao f where f.escolaridade = 'ESI') as qntEscESI,
+                    (SELECT COUNT(*) FROM formacao f where f.escolaridade = 'ESC') as qntEscESC,
+                    
+                    (SELECT COUNT(*) FROM formacao f where f.comoConhe = 'Amigos') as qntdConheAmigos,
+                    (SELECT COUNT(*) FROM formacao f where f.comoConhe = 'Parentes') as qntdConheParentes,
+                    (SELECT COUNT(*) FROM formacao f where f.comoConhe = 'MídiasSociais') as qntdConheMidiasSociais,
+                    (SELECT COUNT(*) FROM formacao f where f.comoConhe = 'Ex-Alunos') as qntdConheExAlunos,
+                    (SELECT COUNT(*) FROM formacao f where f.comoConhe = 'Outro') as qntdConheOutro
                    
                     from endereco join usuario
                         on fkEndUsuario = idUsuario
