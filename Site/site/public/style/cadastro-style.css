@@ -195,23 +195,12 @@ html {
     margin-top: 20px;
     margin-bottom: 50px;
     -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-transition-duration: 0.5s;
-  transition-duration: 0.5s;
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
    
 }
-
-/* .button-cadastrar:hover{
-    background-color: #a08110;
-    animation: move-right-side 1s ease infinite;
-}
-
-.button-cadastrar:hover::before{
-    background-color: #a08110;
-    animation: move-left-side 1s ease infinite;
-} */
-
 
 .button-cadastrar:hover, .button-cadastrar:focus, .button-cadastrar:active {
     -webkit-transform: scale(1.2);
