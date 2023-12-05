@@ -11,6 +11,14 @@ function autenticar(email, senha, tipo) {
                     formacao.*,
                    
                     (SELECT COUNT(*) FROM usuario) as qntdDeCadastros,
+
+                    (SELECT COUNT(*) FROM cadastro where periodo = "Noturno") as qntPeriodoNot,
+                    (SELECT COUNT(*) FROM cadastro where periodo = "Tarde") as qntPeriodoTar,
+                    (SELECT COUNT(*) FROM cadastro where periodo = "Manhã") as qntPeriodoMan,
+
+                    (SELECT COUNT(*) FROM cadastro where regime = "Presencial") as qntRegimePres,
+                    (SELECT COUNT(*) FROM cadastro where regime = "EAD") as qntRegimeEAD,
+                    (SELECT COUNT(*) FROM cadastro where regime = "Híbrido") as qntRegimeHib,
                     
                     (SELECT COUNT(*) FROM usuario u WHERE u.genero = 'Masculino') as qntdGeneroMasculino,
                     (SELECT COUNT(*) FROM usuario u WHERE u.genero = 'Feminino') as qntdGeneroFeminino,

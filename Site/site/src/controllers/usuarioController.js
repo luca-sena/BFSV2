@@ -25,62 +25,7 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        res.json(resultadoAutenticar[0]
-                            // idUsuario: resultadoAutenticar[0].idUsuario,
-                            // siglaEst: resultadoAutenticar[0].siglaEst,
-                            // cidade: resultadoAutenticar[0].cidade,
-                            // bairro: resultadoAutenticar[0].bairro,
-                            // rua: resultadoAutenticar[0].rua,
-                            // numero: resultadoAutenticar[0].numero,
-                            // cep: resultadoAutenticar[0].cep,
-                            // fkEndUsuario: resultadoAutenticar[0].fkEndUsuario,
-                            // nome: resultadoAutenticar[0].nome,
-                            // cpf: resultadoAutenticar[0].cpf,
-                            // email: resultadoAutenticar[0].email,
-                            // telefone: resultadoAutenticar[0].telefone,
-                            // genero: resultadoAutenticar[0].genero,
-                            // senha: resultadoAutenticar[0].senha,
-                            // tipo: resultadoAutenticar[0].tipo,
-                            // dtUsuario: resultadoAutenticar[0].dtUsuario,
-                            // idCad: resultadoAutenticar[0].idCad,
-                            // fkCadUsuario: resultadoAutenticar[0].fkCadUsuario,
-                            // fkCadCurso: resultadoAutenticar[0].fkCadCurso,
-                            // regime: resultadoAutenticar[0].regime,
-                            // periodo: resultadoAutenticar[0].periodo,
-                            // dtProva: resultadoAutenticar[0].dtProva,
-                            // resultado: resultadoAutenticar[0].resultado,
-                            // idCurso: resultadoAutenticar[0].idCurso,
-                            // nomeCurso: resultadoAutenticar[0].nomeCurso,
-                            // duracao: resultadoAutenticar[0].duracao,
-
-                            // qntdDeCadastros: resultadoAutenticar[0].qntdDeCadastros,
-
-                            // qntdGeneroMasculino: resultadoAutenticar[0].qntdGeneroMasculino,
-                            // qntdGeneroFeminino: resultadoAutenticar[0].qntdGeneroFeminino,
-                            // qntdGeneroOutros: resultadoAutenticar[0].qntdGeneroOutros,
-                            // dtNasc: resultadoAutenticar[0].dtNasc,
-
-                            // qntdMenor18: resultadoAutenticar[0].qntdMenor18,
-                            // qntdEntre18e25: resultadoAutenticar[0].qntdEntre18e25,
-                            // qntdEntre26e35: resultadoAutenticar[0].qntdEntre26e35,
-                            // qntdEntre36e59: resultadoAutenticar[0].qntdEntre36e59,
-                            // qntdMaior60: resultadoAutenticar[0].qntdMaior60,
-
-                            // qntEscEMIT: resultadoAutenticar[0].qntEscEMIT,
-                            // qntEscEMIF: resultadoAutenticar[0].qntEscEMIF,
-                            // qntEscEMC: resultadoAutenticar[0].qntEscEMC,
-                            // qntEscESI: resultadoAutenticar[0].qntEscESI,
-                            // qntEscESC: resultadoAutenticar[0].qntEscESC,
-                            
-                            // qntConheAmigos: resultadoAutenticar[0].qntConheAmigos,
-                            // qntConheParentes: resultadoAutenticar[0].qntConheParentes,
-                            // qntConheMidiasSociais: resultadoAutenticar[0].qntConheMidiasSociais,
-                            // qntConheExAlunos: resultadoAutenticar[0].qntConheExAlunos,
-                            // qntConheOutro: resultadoAutenticar[0].qntConheOutro,
-
-
-
-                        );
+                        res.json(resultadoAutenticar[0]);
 
 
                     } else if (resultadoAutenticar.length == 0) {
@@ -124,6 +69,14 @@ function cadastrar(req, res) {
     var comoConheceu = req.body.comoConheceuServer;
 
     var qntdDeCadastros = req.body.qntdDeCadastrosuServer;
+   
+    var qntPeriodoNot = req.body.qntPeriodoNotServer;
+    var qntPeriodoTar = req.body.qntPeriodoTarServer;
+    var qntPeriodoMan = req.body.qntPeriodoManServer;
+    
+    var qntRegimePres = req.body.qntRegimePresServer;
+    var qntRegimeEAD = req.body.qntRegimeEADServer;
+    var qntRegimeHib = req.body.qntRegimeHibServer;
 
     var qntdGeneroMasculino = req.body.qntdGeneroMasculinouServer;
     var qntdGeneroFeminino = req.body.qntdGeneroFemininouServer;
@@ -198,7 +151,8 @@ function cadastrar(req, res) {
              curso, regime, periodo, data, comoConheceu, qntdDeCadastros, qntdGeneroMasculino,
               qntdGeneroFeminino, qntdGeneroOutros, qntdMenor18, qntdEntre18e25, qntdEntre26e35, 
               qntdEntre36e59, qntdMaior60, qntEscEMIT, qntEscEMIF, qntEscEMC, qntEscESI, qntEscESC,
-              qntConheAmigos, qntConheParentes, qntConheMidiasSociais, qntConheExAlunos, qntConheOutro, siglaEst
+              qntConheAmigos, qntConheParentes, qntConheMidiasSociais, qntConheExAlunos, qntConheOutro, siglaEst,
+              qntRegimePres, qntRegimeEAD, qntRegimeHib, qntPeriodoNot, qntPeriodoTar, qntPeriodoMan
               )
             .then(
                 function (resultado) {

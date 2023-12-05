@@ -29,6 +29,7 @@ html {
 
 .canvas-grafico{
     /* margin-top: 10%; */
+    /* margin-bottom: */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,14 +57,15 @@ html {
     background-repeat: no-repeat;
 }
 
-.dash-adm{
+.dash-adm{ 
+    padding: 40px 0;
     width: 100vw;
     max-width: 100%;
-    height: 100vh;
-    /* display: flex; */
+    /* height: 100vh; */
+    display: flex;
     /* position: relative; */
-    /* flex-direction: row; */
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;    
     /* background-image: url("../img/s2-background.png"); */
     background-color: #000;
@@ -218,6 +220,26 @@ html {
     width: 100%;
     margin-top: 1%;
     /* background-color: #ff00fb; */
+}
+
+.dash-line2-2{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    height: 49%;
+    width: 100%;
+    /* margin-top: 1%; */
+    justify-content: space-around;
+    /* background-color: #ff00fb; */
+}
+
+.container-dash .dash-line1-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 49%;
+    width: 100%;
+    /* background-color: #730071; */
 }
 
 .container-dash .dash-line2 .dados{

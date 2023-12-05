@@ -98,7 +98,7 @@
       <div class="dash-adm" id="adminfo">
         <div class="container-dash">
           
-            <div class="dash-line1" style="justify-content: space-around">
+            <div class="dash-line1-1" style="justify-content: space-around">
             <div class="canvas-grafico">
               <div class="title-graph">Gênero</div>
               <canvas id="graficoGen"></canvas>
@@ -110,7 +110,7 @@
             </div>
           </div>
           
-          <div class="dash-line2" style="margin-top: 10%;  justify-content: space-around">
+          <div class="dash-line2-2">
             <div class="canvas-grafico">
               <div class="title-graph">Formação</div>
               <canvas id="graficoForm"></canvas>
@@ -121,6 +121,19 @@
               <canvas id="graficoConheceu"></canvas>
             </div>
           </div>
+          
+          <div class="dash-line2-2">
+            <div class="canvas-grafico">
+              <div class="title-graph">Regime</div>
+              <canvas id="graficoRegime"></canvas>
+            </div>
+
+            <div class="canvas-grafico">
+              <div class="title-graph">Período</div>
+              <canvas id="graficoPeriodo"></canvas>
+            </div>
+          </div>
+        
         </div>
       </div>
     </section>
@@ -371,6 +384,92 @@
           },
         ],
         labels: labelsConheceu,
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: "right",
+          labels: {
+            fontSize: 16,
+            textAlign: "center",
+            padding: 20,
+          },
+        },
+      },
+    });
+
+    //-------------------- GRAFICO REGIME ---------------------------
+
+    let ctx4 = document.getElementById("graficoRegime");
+    
+    let labelsRegime = [
+      "Híbrido",
+      "Presencial",
+      "EAD",
+       ];
+    
+       let colorHexRegime = ["#ff00dd", "#ff9900", "#006aff", ];
+    let dataRegime = [];
+
+    var qntHib = sessionStorage.QTD_REGIME_HIB
+    var qntPres = sessionStorage.QTD_REGIME_PRES
+    var qntEad = sessionStorage.QTD_REGIME_EAD
+
+    dataRegime.push(qntHib, qntPres, qntEad);
+
+    let myChart5 = new Chart(ctx4, {
+      type: "pie",
+      data: {
+        datasets: [
+          {
+            data: dataRegime,
+            backgroundColor: colorHexRegime,
+          },
+        ],
+        labels: labelsRegime,
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: "right",
+          labels: {
+            fontSize: 16,
+            textAlign: "center",
+            padding: 20,
+          },
+        },
+      },
+    });
+
+    //-------------------- GRAFICO PERIODO ---------------------------
+
+    let ctx5 = document.getElementById("graficoPeriodo");
+    
+    let labelsPeriodo = [
+      "Manhã",
+      "Tarde",
+      "Noite",
+       ];
+    
+       let colorHexPeriodo = ["#ff00dd", "#db4b4b", "#006aff", ];
+    let dataPeriodo = [];
+
+    var qntPeriodoNot = sessionStorage.QTD_PERIODO_NOT 
+    var qntPeriodoTar = sessionStorage.QTD_PERIODO_TAR
+    var qntPeriodoMan = sessionStorage.QTD_PERIODO_MAN
+
+    dataPeriodo.push(qntPeriodoNot, qntPeriodoTar, qntPeriodoMan);
+
+    let myChart6 = new Chart(ctx5, {
+      type: "pie",
+      data: {
+        datasets: [
+          {
+            data: dataPeriodo,
+            backgroundColor: colorHexPeriodo,
+          },
+        ],
+        labels: labelsPeriodo,
       },
       options: {
         responsive: true,
